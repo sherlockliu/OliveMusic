@@ -1,3 +1,3 @@
-# mblog Intro
+# Olive Music Intro
 
-this is a blog system based on java,spring.mvc,mybatis,mysql,vuejs and so on.
+This is a music store system based on java,spring.mvc,mybatis,mysql,boostrap,jquery,seajs and so on.
