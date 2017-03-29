@@ -12,6 +12,6 @@
 	                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 	             
 	<!-- 加载系统properties -->
-	<context:property-placeholder location="file:/D:/wonhighconf/retail/fas-blk-dev/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" order="2" system-properties-mode="ENVIRONMENT"/>
-	<context:property-placeholder location="file:${FAS_WEB_CONF}/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" order="2" system-properties-mode="ENVIRONMENT"/>
+	<context:property-placeholder location="file:/D:/magicsoftconf/olive/olive-music-dev/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" order="2" system-properties-mode="ENVIRONMENT"/>
+	<context:property-placeholder location="file:${OLIVE_WEB_CONF}/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" order="2" system-properties-mode="ENVIRONMENT"/>
 </beans>

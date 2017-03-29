@@ -16,9 +16,7 @@
 	<tx:annotation-driven order="1" />
 
 	<!-- 加载base工程配置 -->
-	<import resource="classpath:META-INF/spring-fas-blk-conf.xml" />
-
-
+	<!--<import resource="classpath:META-INF/spring-fas-blk-conf.xml" />
 	<import resource="classpath*:META-INF/spring-base-dal-db.xml" />
 	<import resource="classpath:META-INF/spring-backend-cache.xml" />
 
@@ -33,11 +31,12 @@
 		<context:exclude-filter type="annotation"
 			expression="com.yougou.logistics.base.dal.database.BaseCrudMapper" />
 	</context:component-scan>
-
-
+	-->
+	
+	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
-			value="cn.wonhigh.retail.fas.blk.dal,com.yougou.logistics.base.dal.database" />
+			value="cn.com.magicsoft.olive.music.dal.database" />
 		<property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"></property>
 	</bean>
 
