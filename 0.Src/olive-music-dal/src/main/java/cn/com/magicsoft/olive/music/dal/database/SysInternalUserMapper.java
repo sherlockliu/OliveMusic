@@ -11,5 +11,5 @@ public interface SysInternalUserMapper {
 	
 	List<SysInternalUser> getAll();
 	
-	SysInternalUser getOne(Integer id);
+	SysInternalUser getOne(Integer id); 
 }
