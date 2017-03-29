@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS `olive_ch`;
+CREATE DATABASE  `olive_ch` CHARACTER SET 'utf8';

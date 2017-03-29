@@ -14,26 +14,17 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.1.4.RELEASE</spring.version>
-        <!-- log4j日志文件管理包版本 -->
-        <slf4j.version>1.7.1</slf4j.version>
+        <slf4j.version>1.6.6</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
-        <!-- junit版本号 -->
         <junit.version>4.10</junit.version>
-        <!-- mybatis版本号 -->
-        <mybatis.version>3.2.8</mybatis.version>
-		<mybatis.spring.version>1.2.2</mybatis.spring.version>
+        <mybatis.version>3.2.4</mybatis.version>
 	</properties>
 	<distributionManagement>
 		<repository>
-			<id>releases</id>
-			<name>Yougou Releases</name>
-			<url>http://172.17.210.101:8081/nexus/content/repositories/releases</url>
+			<id>aliyun</id>
+			<name>aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>Yougou Snapshots</name>
-			<url>http://172.17.210.101:8081/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 	<dependencies>
@@ -49,9 +40,80 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>{log4j.version}</version>
+		</dependency>
+		    <!-- 日志文件管理包 -->
+        <!-- log start -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- log end -->
+		<!-- 添加Spring依赖 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 	</dependencies>
 	<modules>
-		<module>olive-music-admin-web</module>
+		<module>olive-music-dal</module>
+		<module>olive-music-domain</module>
 	</modules>
 	<build>
 		<plugins>
