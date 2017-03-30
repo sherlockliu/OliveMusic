@@ -4,14 +4,14 @@
 <mapper namespace="cn.com.magicsoft.olive.music.dal.database.SysInternalUserMapper">
 <!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！-->
     <resultMap id="BaseResultMap" type="cn.com.magicsoft.olive.music.model.SysInternalUser">
-        <result column="user_id" property="UserId" jdbcType="TINYINT" />
-        <result column="user_account" property="UserAccount" jdbcType="CHAR" />
-        <result column="user_name" property="UserName" jdbcType="CHAR" />
-        <result column="password" property="Password" jdbcType="CHAR" />
-        <result column="invalid" property="Invalid" jdbcType="TINYINT" />
-        <result column="last_login_time" property="LastLoginTime" jdbcType="DATE" />
-        <result column="modify_time" property="ModifyTime" jdbcType="DATE" />
-        <result column="create_time" property="CreateTime" jdbcType="DATE" />
+        <result column="user_id" property="userId" jdbcType="TINYINT" />
+        <result column="user_account" property="userAccount" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="invalid" property="invalid" jdbcType="TINYINT" />
+        <result column="last_login_time" property="lastLoginTime" jdbcType="DATE" />
+        <result column="modify_time" property="modifyTime" jdbcType="DATE" />
+        <result column="create_time" property="createTime" jdbcType="DATE" />
     </resultMap>
     <!-- 查询单条记录 -->
     <select id="getOne" resultMap="BaseResultMap">

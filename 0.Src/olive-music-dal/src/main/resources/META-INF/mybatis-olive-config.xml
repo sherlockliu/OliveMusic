@@ -12,6 +12,6 @@
 	</settings>
   
 	<mappers>
-	    <mapper resource="mapper/SysInternalUser.xml"/>
+	    <mapper resource="mapper/SysInternalUserMapper.xml"/>
 	</mappers>     
 </configuration>

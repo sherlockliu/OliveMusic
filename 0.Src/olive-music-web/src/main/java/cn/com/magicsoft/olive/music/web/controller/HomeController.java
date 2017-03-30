@@ -1,5 +1,7 @@
 package cn.com.magicsoft.olive.music.web.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
+import cn.com.magicsoft.olive.music.model.SysInternalUser;
 
 @Controller
 @RequestMapping("/home")
@@ -32,5 +35,16 @@ public class HomeController {
 //	@ResponseBody
 	public String dev() {
 		return "home/dev";
+	}
+	
+
+	@RequestMapping(value = "/query")
+	@ResponseBody
+	public String query(){
+		List<SysInternalUser> list = this.sysInternalUserManager.getAll();
+		if(null!=list){
+			return list.get(0).getUserName();
+		}
+		return "nothing";
 	}
 }
