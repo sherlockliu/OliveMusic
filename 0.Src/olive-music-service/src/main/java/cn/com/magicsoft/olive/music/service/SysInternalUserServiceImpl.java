@@ -11,6 +11,7 @@ import cn.com.magicsoft.olive.music.model.SysInternalUser;
 
 @Service
 public class SysInternalUserServiceImpl implements SysInternalUserService {
+	
 	@Resource
 	private SysInternalUserMapper sysInternalUserMapper;
 	

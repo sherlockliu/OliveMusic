@@ -4,16 +4,14 @@
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
-            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<!-- 加载base工程配置
-	<import resource="classpath:META-INF/spring-base-web.xml"/>
-	 -->
-	<import resource="classpath*:META-INF/spring-olive-music-servlet.xml"/>
+	<!-- 加载依赖service层配置 -->	
+	<import resource="classpath*:META-INF/spring-olive-service.xml" />
+
+	<!-- 扫描本工程bean--> 
+	<context:component-scan base-package="cn.com.magicsoft.olive.music.manager">
+	</context:component-scan>
 	
-	<!-- 扫描本工程下的bean 	<context:component-scan base-package="cn.com.magicsoft.olive.music.web" />-->
-		<!-- 扫描本工程bean -->
-	
-	<!-- 加载依赖manager层配置 -->
 </beans>

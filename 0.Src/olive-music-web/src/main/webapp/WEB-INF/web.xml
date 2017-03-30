@@ -83,7 +83,7 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	 <!--
 	<filter>
 		<display-name>sessionFilter</display-name>
 		<filter-name>sessionFilter</filter-name>
@@ -102,13 +102,13 @@
 		</init-param>
 		<init-param>
 			<param-name>expiry</param-name>
-			<param-value>1800</param-value><!-- thiry minutes -->
+			<param-value>1800</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>sessionFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> thiry minutes -->
 
 	<!-- Processes application requests -->
 	<servlet>
