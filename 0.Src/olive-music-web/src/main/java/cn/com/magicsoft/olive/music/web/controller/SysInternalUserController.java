@@ -1,10 +1,12 @@
 package cn.com.magicsoft.olive.music.web.controller;
 
-import cn.com.magicsoft.framework.web.controller.BaseCrudController;
-import cn.com.magicsoft.olive.music.manager.SysInternalUserManager;
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.com.magicsoft.framework.web.controller.BaseCrudController;
+import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
 
 /**
  * ��д�������; 
@@ -30,4 +32,6 @@ public class SysInternalUserController extends BaseCrudController {
     public CrudInfo init() {
         return new CrudInfo("sys_internal_user/",sysInternalUserManager);
     }
+    
+    
 }

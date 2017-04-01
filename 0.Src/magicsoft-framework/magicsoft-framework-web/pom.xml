@@ -7,6 +7,7 @@
   </parent>
   <artifactId>magicsoft-framework-web</artifactId>
   <version>${project.parent.version}</version>
+  <packaging>war</packaging>
   <dependencies>
   	  <!-- https://mvnrepository.com/artifact/org.apache.ibatis/ibatis-core -->
   	  <dependency>

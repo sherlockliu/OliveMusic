@@ -5,7 +5,7 @@ import cn.com.magicsoft.framework.manager.BaseCrudManager;
 /**
  * ��д�������; 
  * @author user
- * @date  2017-04-01 17:10:22
+ * @date  2017-04-01 17:28:32
  * @version 1.0.0
  * @copyright (C) 2013 WonHigh Information Technology Co.,Ltd 
  * All Rights Reserved. 

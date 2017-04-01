@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.com.magicsoft.framework.core.exception.ManagerException;
 import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
 import cn.com.magicsoft.olive.music.model.SysInternalUser;
 
@@ -32,8 +33,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/dev")
-//	@ResponseBody
+	@ResponseBody
 	public String dev() {
-		return "home/dev";
+		List<SysInternalUser> list;
+		try {
+			list = this.sysInternalUserManager.findByPage(null, null, null, null);
+			if(null != list){
+				return list.get(0).getUserName();
+			}
+			
+		} catch (ManagerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "22";
 	}
+	
 }
