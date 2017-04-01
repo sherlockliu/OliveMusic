@@ -20,5 +20,10 @@
 			<artifactId>olive-music-dal</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>cn.com.magicsoft</groupId>
+			<artifactId>magicsoft-framework-service</artifactId>
+			<version>${magicsoft.framework.version}</version>
+		</dependency>
 	</dependencies>
 </project>

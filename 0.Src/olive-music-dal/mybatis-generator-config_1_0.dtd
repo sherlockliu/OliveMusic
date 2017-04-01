@@ -48,8 +48,22 @@
   The context element is used to describe a context for generating files, and the source
   tables.
 -->
-<!ELEMENT context (property*, plugin*, commentGenerator?, jdbcConnection, javaTypeResolver?,
-                         javaModelGenerator, sqlMapGenerator?, javaClientGenerator?,sqlMapConfigFileAppend?,javaServiceGenerator?,javaManagerGenerator?,javaControllerGenerator?,tableSetting?,table?)>
+<!ELEMENT context (property*, 
+                  plugin*, 
+                  commentGenerator?, 
+                  jdbcConnection, 
+				  javaTypeResolver?,
+				  javaModelGenerator, 
+				  sqlMapGenerator?, 
+				  javaClientGenerator?,
+				  sqlMapConfigFileAppend?,
+				  javaServiceGenerator?,
+				  javaManagerApiGenerator?,
+				  javaManagerGenerator?,
+				  javaControllerGenerator?,
+				  tableSetting?,
+				  table?)>
+				  
 <!ATTLIST context id ID #REQUIRED
   defaultModelType CDATA #IMPLIED
   targetRuntime CDATA #IMPLIED
@@ -143,6 +157,8 @@
   targetPackage CDATA #REQUIRED
   targetProject CDATA #REQUIRED
   implementationPackage CDATA #IMPLIED>
+  
+  
 <!--wei.b 2013.11.04 service manager contrller-->
 <!ELEMENT javaServiceGenerator (property*)>
 <!ATTLIST javaServiceGenerator

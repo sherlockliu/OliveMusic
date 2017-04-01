@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.magicsoft.olive.music.dal.database.OliveArtistTagMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.magicsoft.olive.music.model.OliveArtistTag" >
+    <id column="artist_tag_id" property="artistTagId" jdbcType="INTEGER" />
+    <result column="artist_id" property="artistId" jdbcType="INTEGER" />
+    <result column="tag_id" property="tagId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    artist_tag_id, artist_id, tag_id, create_time
+  </sql>
+  <sql id="condition" >
+    <if test="null!=params" >
+      <if test="null!=params.queryCondition and ''!=params.queryCondition" >
+        ${params.queryCondition}
+      </if>
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM olive_artist_tag
+    WHERE artist_tag_id = #{artistTagId,jdbcType=INTEGER}
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer" >
+    SELECT COUNT(1) as s FROM olive_artist_tag WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <select id="selectByPage" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM olive_artist_tag WHERE 1=1 
+    <include refid="condition" />
+    <if test="orderByField != null and ''!=orderByField" >
+      ORDER BY ${orderByField}
+      <if test="orderByField" >
+        ${orderBy}
+      </if>
+    </if>
+     LIMIT #{page.startRowNum} ,#{page.pageSize} 
+  </select>
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM olive_artist_tag WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM olive_artist_tag
+    WHERE artist_tag_id = #{artistTagId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByPrimarayKeyForModel" parameterType="cn.com.magicsoft.olive.music.model.OliveArtistTag" >
+    DELETE FROM olive_artist_tag
+    WHERE artist_tag_id = #{artistTagId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.com.magicsoft.olive.music.model.OliveArtistTag" >
+    INSERT INTO olive_artist_tag (artist_tag_id, artist_id, tag_id, 
+      create_time)
+    VALUES (#{artistTagId,jdbcType=INTEGER}, #{artistId,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.magicsoft.olive.music.model.OliveArtistTag" >
+    INSERT INTO olive_artist_tag
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="artistTagId != null" >
+        artist_tag_id,
+      </if>
+      <if test="artistId != null" >
+        artist_id,
+      </if>
+      <if test="tagId != null" >
+        tag_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="artistTagId != null" >
+        #{artistTagId,jdbcType=INTEGER},
+      </if>
+      <if test="artistId != null" >
+        #{artistId,jdbcType=INTEGER},
+      </if>
+      <if test="tagId != null" >
+        #{tagId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.magicsoft.olive.music.model.OliveArtistTag" >
+    UPDATE olive_artist_tag
+    <set >
+      <if test="artistId != null" >
+        artist_id = #{artistId,jdbcType=INTEGER},
+      </if>
+      <if test="tagId != null" >
+        tag_id = #{tagId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE artist_tag_id = #{artistTagId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.magicsoft.olive.music.model.OliveArtistTag" >
+    UPDATE olive_artist_tag
+    SET artist_id = #{artistId,jdbcType=INTEGER},
+      tag_id = #{tagId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    WHERE artist_tag_id = #{artistTagId,jdbcType=INTEGER}
+  </update>
+</mapper>

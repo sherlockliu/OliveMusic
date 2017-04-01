@@ -10,8 +10,9 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/retail_fms?useUnicode=true&amp;characterEncoding=UTF-8"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/olive_ch?useUnicode=true&amp;characterEncoding=UTF-8"
 			userId="root" password="root" />
+			
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 			<!-- number(默认为38位),当长度超过18位时无法强制转换decimal 默认false，把JDBC DECIMAL 和 NUMERIC 
@@ -22,36 +23,42 @@
 			targetProject="olive-music-domain">
 			<property name="rootInterface" value="java.io.Serializable"/>
 		</javaModelGenerator>
+		
 		<sqlMapGenerator targetPackage="mapper"
 			targetProject="olive-music-dal/src/main/resources" />
+			
 		<javaClientGenerator targetPackage="cn.com.magicsoft.olive.music.dal.database"
 			targetProject="olive-music-dal" type="XMLMAPPER">
 			<property name="interfaceExtendSupInterface"
-				value="com.yougou.logistics.base.dal.database.BaseCrudMapper" />
+				value="cn.com.magicsoft.framework.dal.BaseCrudMapper" />
 			<property name="enableInterfaceSupInterfaceGenericity"
-				value="false" /> -->
+				value="false" />
 			<property name="exclusionsMethods"
 				value="countByQuery,deleteByQuery,deleteByPrimaryKey,insert,insertSelective,selectByQuery,selectByQueryWithBLOBs,selectByPrimaryKey,selectCount,selectByPage,updateByQuery,updateByQueryWithBLOBs,updateByPrimaryKeySelective,updateByPrimaryKeyWithBLOBs" />
 		</javaClientGenerator>
 
 		<sqlMapConfigFileAppend targetPackage="META-INF"
 			targetProject="olive-music-dal/src/main/resources" 
-			confileFileName="mybatis-fas-dal-config.xml"
+			confileFileName="mybatis-olive-config.xml"
 			confileFilePackagePath="mapper" />
 
 		<javaServiceGenerator targetPackage="cn.com.magicsoft.olive.music.service"
-			targetProject="olive-music-service" 
+			targetProject="olive-music-service"
+			interfaceExtendSupInterface="cn.com.magicsoft.framework.service.BaseCrudService" 
 			enableInterfaceSupInterfaceGenericity="false"
+			extendSupClass="cn.com.magicsoft.framework.service.BaseCrudServiceImpl"
 			enableSupClassGenericity="false" />
 
 		<javaManagerGenerator targetPackage="cn.com.magicsoft.olive.music.manager"
 			targetProject="olive-music-manager" 
-			interfaceExtendSupInterface="com.yougou.logistics.base.manager.BaseCrudManager"
+			interfaceExtendSupInterface="cn.com.magicsoft.framework.manager.BaseCrudManager"
 			enableInterfaceSupInterfaceGenericity="false"
+			extendSupClass="cn.com.magicsoft.framework.manager.BaseCrudManagerImpl"
 			enableSupClassGenericity="false" />
 
 		<javaControllerGenerator targetPackage="cn.com.magicsoft.olive.music.web.controller"
 			targetProject="olive-music-web"
+			extendSupClass="cn.com.magicsoft.framework.web.controller.BaseCrudController"
 			enableSupClassGenericity="true" />
 		<!-- <table schema="dev1" tableName="logistics_base" domainObjectName="LogisticsBase" 
 			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 

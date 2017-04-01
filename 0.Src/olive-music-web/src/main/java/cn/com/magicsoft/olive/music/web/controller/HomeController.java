@@ -36,15 +36,4 @@ public class HomeController {
 	public String dev() {
 		return "home/dev";
 	}
-	
-
-	@RequestMapping(value = "/query")
-	@ResponseBody
-	public String query(){
-		List<SysInternalUser> list = this.sysInternalUserManager.getAll();
-		if(null!=list){
-			return list.get(0).getUserName();
-		}
-		return "nothing";
-	}
 }

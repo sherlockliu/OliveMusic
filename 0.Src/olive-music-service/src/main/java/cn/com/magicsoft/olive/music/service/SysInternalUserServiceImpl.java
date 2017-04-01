@@ -1,27 +1,32 @@
 package cn.com.magicsoft.olive.music.service;
 
-import java.util.List;
-
+import cn.com.magicsoft.framework.dal.BaseCrudMapper;
+import cn.com.magicsoft.framework.service.BaseCrudServiceImpl;
+import cn.com.magicsoft.olive.music.dal.database.SysInternalUserMapper;
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 
-import cn.com.magicsoft.olive.music.dal.database.SysInternalUserMapper;
-import cn.com.magicsoft.olive.music.model.SysInternalUser;
+/**
+ * 请写出类的用途 
+ * @author user
+ * @date  2017-04-01 17:10:22
+ * @version 1.0.0
+ * @copyright (C) 2013 WonHigh Information Technology Co.,Ltd 
+ * All Rights Reserved. 
+ * 
+ * The software for the WonHigh technology development, without the 
+ * company's written consent, and any other individuals and 
+ * organizations shall not be used, Copying, Modify or distribute 
+ * the software.
+ * 
+ */
+@Service("sysInternalUserService")
+class SysInternalUserServiceImpl extends BaseCrudServiceImpl implements SysInternalUserService {
+    @Resource
+    private SysInternalUserMapper sysInternalUserMapper;
 
-@Service
-public class SysInternalUserServiceImpl implements SysInternalUserService {
-	
-	@Resource
-	private SysInternalUserMapper sysInternalUserMapper;
-	
-	@Override
-	public List<SysInternalUser> getAll() {
-		return this.sysInternalUserMapper.getAll();
-	}
-
-	@Override
-	public SysInternalUser getOne(Integer id) {
-		return this.sysInternalUserMapper.getOne(id);
-	}
+    @Override
+    public BaseCrudMapper init() {
+        return sysInternalUserMapper;
+    }
 }

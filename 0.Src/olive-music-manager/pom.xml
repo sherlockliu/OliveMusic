@@ -24,5 +24,10 @@
 			<artifactId>olive-music-manager-api</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>cn.com.magicsoft</groupId>
+			<artifactId>magicsoft-framework-manager</artifactId>
+			<version>${magicsoft.framework.version}</version>
+		</dependency>
 	</dependencies>
 </project>

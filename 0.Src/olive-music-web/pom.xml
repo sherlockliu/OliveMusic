@@ -25,6 +25,11 @@
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>cn.com.magicsoft</groupId>
+			<artifactId>magicsoft-framework-web</artifactId>
+			<version>${magicsoft.framework.version}</version>
+		</dependency>
+		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.magicsoft.olive.music.dal.database.OliveAlbumRelatedMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.magicsoft.olive.music.model.OliveAlbumRelated" >
+    <id column="related_id" property="relatedId" jdbcType="INTEGER" />
+    <result column="album_id" property="albumId" jdbcType="INTEGER" />
+    <result column="related_album_id" property="relatedAlbumId" jdbcType="INTEGER" />
+    <result column="Score" property="score" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    related_id, album_id, related_album_id, Score, create_time
+  </sql>
+  <sql id="condition" >
+    <if test="null!=params" >
+      <if test="null!=params.queryCondition and ''!=params.queryCondition" >
+        ${params.queryCondition}
+      </if>
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM olive_album_related
+    WHERE related_id = #{relatedId,jdbcType=INTEGER}
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer" >
+    SELECT COUNT(1) as s FROM olive_album_related WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <select id="selectByPage" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM olive_album_related WHERE 1=1 
+    <include refid="condition" />
+    <if test="orderByField != null and ''!=orderByField" >
+      ORDER BY ${orderByField}
+      <if test="orderByField" >
+        ${orderBy}
+      </if>
+    </if>
+     LIMIT #{page.startRowNum} ,#{page.pageSize} 
+  </select>
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM olive_album_related WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM olive_album_related
+    WHERE related_id = #{relatedId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByPrimarayKeyForModel" parameterType="cn.com.magicsoft.olive.music.model.OliveAlbumRelated" >
+    DELETE FROM olive_album_related
+    WHERE related_id = #{relatedId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.com.magicsoft.olive.music.model.OliveAlbumRelated" >
+    INSERT INTO olive_album_related (related_id, album_id, related_album_id, 
+      Score, create_time)
+    VALUES (#{relatedId,jdbcType=INTEGER}, #{albumId,jdbcType=INTEGER}, #{relatedAlbumId,jdbcType=INTEGER}, 
+      #{score,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.magicsoft.olive.music.model.OliveAlbumRelated" >
+    INSERT INTO olive_album_related
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="relatedId != null" >
+        related_id,
+      </if>
+      <if test="albumId != null" >
+        album_id,
+      </if>
+      <if test="relatedAlbumId != null" >
+        related_album_id,
+      </if>
+      <if test="score != null" >
+        Score,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="relatedId != null" >
+        #{relatedId,jdbcType=INTEGER},
+      </if>
+      <if test="albumId != null" >
+        #{albumId,jdbcType=INTEGER},
+      </if>
+      <if test="relatedAlbumId != null" >
+        #{relatedAlbumId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.magicsoft.olive.music.model.OliveAlbumRelated" >
+    UPDATE olive_album_related
+    <set >
+      <if test="albumId != null" >
+        album_id = #{albumId,jdbcType=INTEGER},
+      </if>
+      <if test="relatedAlbumId != null" >
+        related_album_id = #{relatedAlbumId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        Score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE related_id = #{relatedId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.magicsoft.olive.music.model.OliveAlbumRelated" >
+    UPDATE olive_album_related
+    SET album_id = #{albumId,jdbcType=INTEGER},
+      related_album_id = #{relatedAlbumId,jdbcType=INTEGER},
+      Score = #{score,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    WHERE related_id = #{relatedId,jdbcType=INTEGER}
+  </update>
+</mapper>
