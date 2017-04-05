@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import cn.com.magicsoft.framework.manager.BaseCrudManagerImpl;
 import cn.com.magicsoft.framework.service.BaseCrudService;
+import cn.com.magicsoft.olive.music.dal.database.SysInternalUserMapper;
 import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
 import cn.com.magicsoft.olive.music.service.SysInternalUserService;
 
@@ -27,7 +28,7 @@ import cn.com.magicsoft.olive.music.service.SysInternalUserService;
 class SysInternalUserManagerImpl extends BaseCrudManagerImpl implements SysInternalUserManager {
     @Resource
     private SysInternalUserService sysInternalUserService;
-
+    
     @Override
     public BaseCrudService init() {
         return sysInternalUserService;

@@ -1,13 +1,16 @@
 package cn.com.magicsoft.olive.music.service;
 
+//import cn.com.magicsoft.olive.music.dal.database.OliveAlbumExtMapper;
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import cn.com.magicsoft.framework.dal.BaseCrudMapper;
 import cn.com.magicsoft.framework.service.BaseCrudServiceImpl;
 import cn.com.magicsoft.olive.music.dal.database.OliveAlbumExtMapper;
-import javax.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
- * ÇëÐ´³öÀàµÄÓÃÍ¾ 
+ * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ 
  * @author user
  * @date  2017-04-01 17:10:22
  * @version 1.0.0
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("oliveAlbumExtService")
 class OliveAlbumExtServiceImpl extends BaseCrudServiceImpl implements OliveAlbumExtService {
+	
     @Resource
     private OliveAlbumExtMapper oliveAlbumExtMapper;
 

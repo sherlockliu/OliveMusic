@@ -25,6 +25,7 @@ import org.codehaus.jackson.type.TypeReference;
 import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -40,6 +41,7 @@ import cn.com.magicsoft.framework.core.utils.CustomDateEditorBase;
 import cn.com.magicsoft.framework.core.utils.HSSFExportUtils;
 import cn.com.magicsoft.framework.manager.BaseCrudManager;
 
+@Controller
 public abstract class BaseCrudController<ModelType> {
 	
 	private BaseCrudManager manager;

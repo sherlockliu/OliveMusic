@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,10 +30,13 @@ public abstract class BaseCrudServiceImpl implements BaseCrudService {
 	private String valid;
 	private BaseCrudMapper mapper;
 
+	
 	public BaseCrudServiceImpl() {
 		this.valid = "false";
+		this.initConfig();
 	}
 
+	@PostConstruct
 	private void initConfig() {
 		this.mapper = init();
 		if ((null != this.valid) && (new Boolean(this.valid).booleanValue()) && (null == this.validator))

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import cn.com.magicsoft.framework.core.exception.ServiceException;
 import cn.com.magicsoft.framework.core.model.AuthorityParams;
 import cn.com.magicsoft.framework.service.BaseCrudService;
 
+@Service
 public abstract class BaseCrudManagerImpl implements BaseCrudManager {
 	private BaseCrudService service;
 

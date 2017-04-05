@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.magicsoft.framework.core.exception.ManagerException;
+import cn.com.magicsoft.olive.music.dal.database.SysInternalUserMapper;
 import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
 import cn.com.magicsoft.olive.music.model.SysInternalUser;
 
@@ -17,7 +18,8 @@ import cn.com.magicsoft.olive.music.model.SysInternalUser;
 public class HomeController {
 	
 	@Resource
-	private SysInternalUserManager sysInternalUserManager; 
+	private SysInternalUserManager sysInternalUserManager;
+
 	
 //	@RequestMapping(value = "/index")
 //	@ResponseBody
@@ -37,12 +39,13 @@ public class HomeController {
 	public String dev() {
 		List<SysInternalUser> list;
 		try {
-			list = this.sysInternalUserManager.findByPage(null, null, null, null);
-			if(null != list){
-				return list.get(0).getUserName();
-			}
-			
-		} catch (ManagerException e) {
+//			list = this.sysInternalUserManager.findByPage(null, null, null, null);
+ 		    Integer count = this.sysInternalUserManager.findCount(null);
+//			if(null != list){
+//				return list.get(0).getUserName();
+//			}
+			return count.toString();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

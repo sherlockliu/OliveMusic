@@ -34,6 +34,7 @@
 	-->
 	
 	<import resource="classpath:META-INF/spring-olive-conf.xml" />
+	<import resource="classpath:META-INF/spring-framework-dal.xml" />
 	
 	<bean id="sqlSessionFactoryForLogistics" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="configLocation" value="${mybatis.mappers}" />
