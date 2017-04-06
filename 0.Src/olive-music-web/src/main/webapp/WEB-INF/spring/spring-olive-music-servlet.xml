@@ -46,8 +46,7 @@
 				<entry key="env_identify" value-ref="environmentIdentifyMethod" />-->
 			</map>
 		</property>
-	</bean>
-	
+	</bean>	
 	<!--<bean id="freemarkerUtil" class="cn.wonhigh.retail.backend.web.common.FreemarkerUtil">
 		 <property name="config" ref="freemarkerConfig"></property>
 	</bean>
@@ -66,7 +65,6 @@
 		<property name="suffix" value=".ftl" />
 		<property name="contentType" value="text/html; charset=utf-8" />
 	</bean>
-
 	<!--
 	<bean id="initCacheController" class="cn.wonhigh.retail.fas.web.controller.InitCacheController" init-method="init" ></bean>
 	<bean id="multipartResolver"
