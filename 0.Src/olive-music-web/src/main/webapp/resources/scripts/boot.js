@@ -10,7 +10,8 @@
                 'jQuery':'olive/resources/asserts/scripts/jquery-2.0.3.min',
                 'olive':'olive/resources/scripts/olive',
                 'overlay':'olive/resources/scripts/lib/magicsoft.ui.overlay',
-                'AjaxPromise':'olive/resources/scripts/lib/magicsoft.io.AjaxPromise'
+                'AjaxPromise':'olive/resources/scripts/lib/magicsoft.io.AjaxPromise',
+                'spinner':'olive/resources/scripts/lib/magicsoft.ui.spinner'
             },
             map: [
                 [ /^(.*\.(?:css|js))(.*)$/i, '$1']

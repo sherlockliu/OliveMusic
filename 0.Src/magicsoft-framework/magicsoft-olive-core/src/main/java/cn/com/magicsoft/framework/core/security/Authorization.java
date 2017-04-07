@@ -22,33 +22,39 @@ public class Authorization {
 	protected static final XLogger logger = XLoggerFactory.getXLogger(Authorization.class);
 
 	private static AuthorizationProvider getProvider() {
-		if (authorizationProvider == null && SpringContext.containsBean("authorizationProvider"))
+		if (authorizationProvider == null && SpringContext.containsBean("authorizationProvider")){
 			authorizationProvider = SpringContext.getBean("authorizationProvider");
+		}
 		return authorizationProvider;
 	}
 
 	private static Storage storage;
 
 	public static Storage getStorage() {
-		if (storage == null)
+		if (storage == null){
 			storage = SpringContext.getBean("securityStorage");
+		}
 		return storage;
 	}
 
 	private static RoleAccessProvider roleProvider;
 
 	private static RoleAccessProvider getRoleProvider() {
-		if (roleProvider == null)
-			if (SpringContext.containsBean("roleAccessProvider"))
+		if (roleProvider == null){
+			if (SpringContext.containsBean("roleAccessProvider")){
 				roleProvider = SpringContext.getBean("roleAccessProvider");
-			else
+			}
+			else{
 				roleProvider = new DefaultRoleAccessProvider();
+			}
+		}
 		return roleProvider;
 	}
 
 	private static Configration getConfig() {
-		if (configration == null)
+		if (configration == null){
 			configration = SpringContext.getBean("configration");
+		}
 		return configration;
 	}
 
@@ -72,7 +78,6 @@ public class Authorization {
 		if (getProvider() == null)
 			return null;
 		SecurityUser user = getProvider().getUser();
-
 		if (user == null && getConfig().sessionDisable > 0) {
 			logger.info("验证关闭，自动创建用户:" + getConfig().sessionDisable);
 			user = new SecurityUser();

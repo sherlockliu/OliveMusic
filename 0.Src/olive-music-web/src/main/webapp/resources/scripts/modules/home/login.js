@@ -25,6 +25,7 @@ define(['jQuery','olive','serviceFactory','overlay','services/authenticationServ
                                 window.location.href = `/home/index`.serverPath();
                             }else{
                                 alert('login failed.')//TODO
+                                $('#login-box').overlay('close');
                             }
                         }).catch((e)=>{
                         	console.log(e);
