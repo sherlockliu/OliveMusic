@@ -6,6 +6,12 @@
     <meta name="description" content="Mordor Administrator Login" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <#include "/WEB-INF/ftl/shared/header.ftl" >
+        <script>
+            var loginController;
+            seajs.use(['overlay','module/home/login'], function(overlay,login) {
+                loginController = login;
+            });
+        </script>
 </head>
 
 <body class="login-layout">
@@ -17,7 +23,7 @@
                         <div class="center">
                             <h1>
                                 <i class="icon-leaf green"></i>
-                                <span class="red">Mordor</span>
+                                <span class="red">Olive</span>
                                 <span class="white">后台管理系统</span>
                             </h1>
                             <h4 class="blue">&copy; MagicSoft</h4>

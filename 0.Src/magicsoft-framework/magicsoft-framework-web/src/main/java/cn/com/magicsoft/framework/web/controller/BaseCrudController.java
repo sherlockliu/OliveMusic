@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
@@ -22,6 +23,9 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+import org.junit.experimental.theories.Theories;
+import org.slf4j.ext.XLogger;
+import org.slf4j.ext.XLoggerFactory;
 import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,12 +50,18 @@ public abstract class BaseCrudController<ModelType> {
 	
 	private BaseCrudManager manager;
 	private BaseCrudController<ModelType>.CrudInfo crudInfo;
+//	private String controllerName;
 
+//	protected XLogger Logger = null;
+	
 	@PostConstruct
 	protected void initConfig() {
 		this.crudInfo = init();
 		this.manager = this.crudInfo.getManager();
+//		this.controllerName = "".equals(this.crudInfo.getName())?this.manager.toString():this.crudInfo.getName();
+//		this.Logger = XLoggerFactory.getXLogger(this.controllerName);
 	}
+
 
 	protected abstract BaseCrudController<ModelType>.CrudInfo init();
 
@@ -303,6 +313,15 @@ public abstract class BaseCrudController<ModelType> {
 	public class CrudInfo {
 		private String ftlFolder;
 		private BaseCrudManager manager;
+		private String name;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
 
 		public CrudInfo(String ftlFolder, BaseCrudManager manager) {
 			this.ftlFolder = ftlFolder;

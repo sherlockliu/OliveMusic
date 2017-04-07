@@ -50,6 +50,18 @@
     <include refid="Base_Column_List" />
      FROM sys_internal_user WHERE 1=1 
     <include refid="condition" />
+    <if test="params.userAccount != null" >
+        AND user_account = #{params.userAccount}
+      </if>
+      <if test="params.userName != null" >
+        AND user_name = #{params.userName}
+      </if>
+      <if test="params.password != null" >
+        AND password = #{params.password} 
+      </if> 
+      <if test="params.invalid != null" >
+        AND invalid = #{params.invalid}
+      </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     DELETE FROM sys_internal_user

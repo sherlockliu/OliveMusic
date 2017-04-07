@@ -147,3 +147,9 @@ function resize() {
     //$("#mainFrame").height($("#mainFrame").contents().find("body").height());
     $('.page-content').height(contentHeight + 'px');
 }
+
+
+define(['jQuery','olive','serviceFactory'],function(require,exports,module){
+    "use strict";
+
+})

@@ -5,7 +5,6 @@
 	var contextPath = '${springMacroRequestContext.getContextPath()}',
 		options = [${options}],
 		resourcesUrl = '${resourcesUrl}',
-		window.version='${version}',
 		staticurl = '${staticFileUrl}';
 </script>
 <link type="text/css" rel="stylesheet" href="/olive/resources/asserts/content/css/bootstrap.min.css" />
@@ -50,18 +49,23 @@
 <script type="text/javascript" src="/olive/resources/asserts/scripts/ace-elements.min.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/ace.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/bootbox.min.js?version=${version}" ></script>
-<script type="text/javascript" src="/olive/resources/asserts/scripts/seajs/2.2.0/sea.debug.js?version=${version}" ></script>
+<script type="text/javascript" src="/olive/resources/asserts/scripts/jquery.validate.js?version=${version}"></script>
+<script type="text/javascript" src="/olive/resources/asserts/scripts/seajs/2.2.0/sea-debug.js?version=${version}" ></script>
 <!-- olive scripts -->
 <script type="text/javascript" src="/olive/resources/scripts/boot.js?version=${version}" ></script>
+<script type="text/javascript" src="/olive/resources/scripts/olive.js?version=${version}" ></script>
+<script type="text/javascript" src="/olive/resources/scripts/olive.prototype.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.service.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.dialog.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.form.js?version=${version}"></script>
 
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.format.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.grid.js?version=${version}" ></script>
-<script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.overlay.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.resource.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.selectBox.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.utils.js?version=${version}"></script>
+
+
+
 
 
