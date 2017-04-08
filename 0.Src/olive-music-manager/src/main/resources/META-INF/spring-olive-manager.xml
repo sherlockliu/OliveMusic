@@ -10,10 +10,12 @@
 	<import resource="classpath*:META-INF/spring-framework-manager.xml" />
 
 	<!-- 加载依赖service层配置 -->	
+	<import resource="classpath*:META-INF/spring-framework-manager.xml" />
+	
+	<!-- 加载依赖service层配置 -->	
 	<import resource="classpath*:META-INF/spring-olive-service.xml" />
 
 	<!-- 扫描本工程bean--> 
 	<context:component-scan base-package="cn.com.magicsoft.olive.music.manager">
 	</context:component-scan>
-	
 </beans>

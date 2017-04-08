@@ -7,9 +7,9 @@
             http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<!-- 加载base工程配置
-	<import resource="classpath:META-INF/spring-base-web.xml"/>
-	 -->
+	<!-- 加载base工程配置-->
+	<import resource="classpath*:META-INF/spring-framework-web.xml"/>
+	 
 	<import resource="classpath*:META-INF/spring-olive-music-servlet.xml"/>
 	
 	<!-- 扫描本工程下的bean 	<context:component-scan base-package="cn.com.magicsoft.olive.music.web" />-->

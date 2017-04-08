@@ -19,6 +19,7 @@
 		    <artifactId>magicsoft-framework-dal</artifactId>
 		    <version>${project.parent.version}</version>
 		</dependency>
+<<<<<<< Updated upstream
   </dependencies>
   <build>
 		<plugins>
@@ -62,4 +63,17 @@
 			</resource>
 		</resources>
 	</build>  
+=======
+		<dependency>
+		    <groupId>org.apache.ibatis</groupId>
+		    <artifactId>ibatis-core</artifactId>
+		    <version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+  </dependencies>  
+>>>>>>> Stashed changes
 </project>

@@ -2,12 +2,9 @@ package cn.com.magicsoft.framework.dal;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
-
 import cn.com.magicsoft.framework.core.data.SimplePage;
 import cn.com.magicsoft.framework.core.model.AuthorityParams;
-
 
 public abstract interface BaseCrudMapper
 {

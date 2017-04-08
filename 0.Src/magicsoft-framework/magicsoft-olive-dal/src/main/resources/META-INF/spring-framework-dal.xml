@@ -8,6 +8,14 @@
 	                      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd         
 	                      http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd         
 	                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+<<<<<<< Updated upstream
 	                      
 	<context:component-scan base-package="cn.com.magicsoft.framework.dal" />
 </beans>
+=======
+	
+	<context:component-scan base-package="cn.com.magicsoft.framework.dal">
+	</context:component-scan>
+	<!-- 声明使用注解式事务 <tx:annotation-driven transaction-manager="transactionManager"/> -->
+</beans>
+>>>>>>> Stashed changes

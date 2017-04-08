@@ -3,7 +3,7 @@ package cn.com.magicsoft.olive.music.dal.database;
 import cn.com.magicsoft.framework.dal.BaseCrudMapper;
 
 /**
- * ÇëĞ´³öÀàµÄÓÃÍ¾ 
+ * ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ 
  * @author user
  * @date  2017-04-01 17:10:22
  * @version 1.0.0
@@ -16,5 +16,5 @@ import cn.com.magicsoft.framework.dal.BaseCrudMapper;
  * the software.
  * 
  */
-public interface SysInternalUserMapper extends BaseCrudMapper {
+public interface SysInternalUserMapper extends BaseCrudMapper{
 }

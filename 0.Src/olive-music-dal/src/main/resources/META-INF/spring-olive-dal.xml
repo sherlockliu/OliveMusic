@@ -9,11 +9,13 @@
 	                      http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd         
 	                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-	<!-- 加载注解功能 -->
+	<!-- 加载注解功能  -->
+	
 	<aop:aspectj-autoproxy />
 	<context:spring-configured />
 	<context:annotation-config />
 	<tx:annotation-driven order="1" />
+<<<<<<< Updated upstream
 
 	<!-- 加载base工程配置 -->
 	<!--<import resource="classpath:META-INF/spring-fas-blk-conf.xml" />
@@ -35,24 +37,10 @@
 	
 	<import resource="classpath:META-INF/spring-olive-conf.xml" />
 	<import resource="classpath:META-INF/spring-framework-dal.xml" />
+=======
+	<import resource="classpath*:META-INF/spring-olive-conf.xml" />
+>>>>>>> Stashed changes
 	
-	<bean id="sqlSessionFactoryForLogistics" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configLocation" value="${mybatis.mappers}" />
-		<property name="dataSource" ref="dataSource" />
-	</bean>  
-	
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactoryForLogistics" />
-	</bean>
-	
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage"
-			value="cn.com.magicsoft.olive.music.dal.database" />
-		<property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"></property>
-	</bean>
-
-	<!-- 声明使用注解式事务 <tx:annotation-driven transaction-manager="transactionManager"/> -->
-
 	<!-- 配置数据源 用于执行jdbc -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
@@ -102,4 +90,20 @@
 			<value>20000</value>
 		</property>
 	</bean>
+	
+	<bean id="sqlSessionFactoryForLogistics" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="${mybatis.mappers}" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>  
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactoryForLogistics" />
+	</bean>
+	
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"
+			value="cn.com.magicsoft.olive.music.dal.database" />
+		<property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"></property>
+	</bean>	
 </beans>

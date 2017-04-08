@@ -27,6 +27,7 @@ public abstract class BaseCrudServiceImpl implements BaseCrudService {
 
 	@Value("${base.boot.is_need_validate}")
 	private String valid;
+	
 	private BaseCrudMapper mapper;
 
 	

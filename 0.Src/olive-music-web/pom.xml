@@ -25,15 +25,16 @@
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>cn.com.magicsoft</groupId>
-			<artifactId>magicsoft-framework-web</artifactId>
-			<version>${magicsoft.framework.version}</version>
-		</dependency>
-		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjtools -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjtools</artifactId>
+		    <version>1.6.2</version>
+		</dependency>
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
