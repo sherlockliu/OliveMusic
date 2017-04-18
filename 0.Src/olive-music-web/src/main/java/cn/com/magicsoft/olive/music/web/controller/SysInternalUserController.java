@@ -68,18 +68,14 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
 		return result;
 	}
     
-    private void decoratePwd(Map<String,Object> params){
+    private void decoratePwd(Map<String,Object> params) throws NoSuchAlgorithmException{
     	if(null != params){
     		String key = "password";
     		if(params.containsKey(key)){
     			String pwd = (String) params.get(key);
-    			try {
-					String md5 = EncryptUtils.md5Hash(pwd);
-					params.remove(key);
-	    			params.put(key, md5);
-				} catch (NoSuchAlgorithmException e) {
-					logger.error("", e);
-				}
+    			String md5 = EncryptUtils.md5(pwd);
+				params.remove(key);
+				params.put(key, md5);
     		}
     	}
     }

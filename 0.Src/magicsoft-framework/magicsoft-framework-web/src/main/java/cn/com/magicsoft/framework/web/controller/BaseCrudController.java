@@ -45,7 +45,6 @@ import cn.com.magicsoft.framework.core.utils.CustomDateEditorBase;
 import cn.com.magicsoft.framework.core.utils.HSSFExportUtils;
 import cn.com.magicsoft.framework.manager.BaseCrudManager;
 
-@Controller
 public abstract class BaseCrudController<ModelType> {
 	
 	private BaseCrudManager manager;

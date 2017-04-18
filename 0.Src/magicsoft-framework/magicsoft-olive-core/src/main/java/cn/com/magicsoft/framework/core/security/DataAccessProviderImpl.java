@@ -39,6 +39,7 @@ public class DataAccessProviderImpl implements DataAccessProvider {
 		storage().remove(DATA_ACCESS_KEY);
 	}
 
+	@SuppressWarnings("unused")
 	private Map<String, List<String>> getData() {
 		Map<String, List<String>> data = storage().get(DATA_ACCESS_KEY);
 		if (data == null) {
@@ -47,17 +48,6 @@ public class DataAccessProviderImpl implements DataAccessProvider {
 		}
 		return data;
 	}
-
-//	private boolean isWebThreadServer() {
-//		try {
-//			String name = Thread.currentThread().getName();
-//			if (name.contains("http-bio"))
-//				return true; 
-//			return RequestContextHolder.currentRequestAttributes() != null;
-//		} catch (Exception e) {
-//			return false;
-//		} 
-//	}
 
 	@Override
 	public List<String> getAccessData(String name) {

@@ -18,7 +18,6 @@ public class SpringContext implements ApplicationContextAware {
 
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		context = applicationContext;
-
 	}
 
 	public static ApplicationContext getContext() {
@@ -37,14 +36,12 @@ public class SpringContext implements ApplicationContextAware {
 	
 	public static void buildUp(Object obj){
 		AutowireCapableBeanFactory factory = getContext().getAutowireCapableBeanFactory();
-		
 		factory.autowireBeanProperties(obj, AutowireCapableBeanFactory.AUTOWIRE_NO, false);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public static <T> T create(Class<?> cls){
 		AutowireCapableBeanFactory factory = getContext().getAutowireCapableBeanFactory();
-		
 		return (T)factory.createBean(cls, AutowireCapableBeanFactory.AUTOWIRE_NO, false);
 	}
 
@@ -57,13 +54,11 @@ public class SpringContext implements ApplicationContextAware {
 		if (!AopUtils.isAopProxy(proxy)) {
 			return proxy;// 不是代理对象
 		}
-
 		if (AopUtils.isJdkDynamicProxy(proxy)) {
 			return getJdkDynamicProxyTargetObject(proxy);
 		} else {
 			return getCglibProxyTargetObject(proxy);
 		}
-
 	}
 
 	private static Object getCglibProxyTargetObject(Object proxy) throws Exception {

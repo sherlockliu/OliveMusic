@@ -60,10 +60,12 @@ public class Authorization {
 
 	private static DataAccessProvider getDataAccessProvider() {
 		if (dataAccessProvider == null) {
-			if (SpringContext.containsBean("dataAccessProvider"))
+			if (SpringContext.containsBean("dataAccessProvider")){
 				dataAccessProvider = (DataAccessProvider) SpringContext.getBean("dataAccessProvider");
-			else
+			}
+			else{
 				dataAccessProvider = new EmptyDataAccessProvider();
+			}
 		}
 		return dataAccessProvider;
 	}

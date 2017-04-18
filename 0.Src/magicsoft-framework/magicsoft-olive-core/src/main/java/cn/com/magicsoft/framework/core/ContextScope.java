@@ -10,8 +10,9 @@ public class ContextScope implements AutoCloseable {
 	Set<AutoCloseable> container = new HashSet<>();
 
 	public ContextScope() {
-		if( local.get() == null)
+		if( local.get() == null){
 			local.set(this);
+		}
 		counter.addAndGet(1);
 	}
 	
@@ -21,15 +22,17 @@ public class ContextScope implements AutoCloseable {
 	
 	public static void set(AutoCloseable item){
 		ContextScope scope = local.get();
-		if( scope == null)
+		if( scope == null){
 			throw new NullPointerException("调用之前必须先实例化ContextScope.");
+		}
 		scope.container.add(item);
 	}
 	
 	public static void remove(AutoCloseable item){
 		ContextScope scope = local.get();
-		if( scope == null)
+		if( scope == null){
 			throw new NullPointerException("调用之前必须先实例化ContextScope.");
+		}
 		scope.container.remove(item);
 	}
 	
@@ -45,5 +48,4 @@ public class ContextScope implements AutoCloseable {
 			}
 		}
 	}
-
 }

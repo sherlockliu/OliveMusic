@@ -66,5 +66,4 @@ public class MapQueryParam<K, V> implements QueryParam<K, V> {
 	public Set<java.util.Map.Entry<K, V>> entrySet() {
 		return map.entrySet();
 	}
-	
 }

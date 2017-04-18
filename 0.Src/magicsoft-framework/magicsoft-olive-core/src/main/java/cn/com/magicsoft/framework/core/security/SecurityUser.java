@@ -1,9 +1,19 @@
 package cn.com.magicsoft.framework.core.security;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SecurityUser {
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class SecurityUser implements Serializable, Cloneable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer userId;
 	private String userName;
 	private List<Role> roles;
@@ -45,5 +55,7 @@ public class SecurityUser {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 }
