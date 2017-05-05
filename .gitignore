@@ -32,3 +32,10 @@ release.properties
 Servers/*
 target/*
 0.src/**/.settings/*
+0.Src/olive-music-domain/target/classes/META-INF/MANIFEST.MF
+
+0.Src/olive-music-domain/target/classes/META-INF/MANIFEST.MF
+
+*.MF
+
+0.Src/olive-music-domain/target/classes/META-INF/maven/cn.com.magicsoft/olive-music-domain/pom.properties

@@ -22,9 +22,6 @@ import cn.com.magicsoft.framework.dal.BaseCrudMapper;
 
 public abstract class BaseCrudServiceImpl implements BaseCrudService {
 
-	@Autowired(required = false)
-	private Validator validator;
-
 	@Value("${base.boot.is_need_validate}")
 	private String valid;
 	private BaseCrudMapper mapper;
@@ -38,8 +35,8 @@ public abstract class BaseCrudServiceImpl implements BaseCrudService {
 	@PostConstruct
 	private void initConfig() {
 		this.mapper = init();
-		if ((null != this.valid) && (new Boolean(this.valid).booleanValue()) && (null == this.validator))
-			throw new RuntimeException("系统开启实体类验证,验证器为空异常");
+//		if ((null != this.valid) && (new Boolean(this.valid).booleanValue()) && (null == this.validator))
+//			throw new RuntimeException("系统开启实体类验证,验证器为空异常");
 	}
 
 	public abstract BaseCrudMapper init();
@@ -48,15 +45,15 @@ public abstract class BaseCrudServiceImpl implements BaseCrudService {
 		if ((null == this.valid) || (!(new Boolean(this.valid).booleanValue()))) {
 			return;
 		}
-		Set<ConstraintViolation<ModelType>> constraintViolations = this.validator.validate(t, new Class[0]);
-		if (constraintViolations.size() > 0) {
-			StringBuilder validateError = new StringBuilder();
-			for (ConstraintViolation<?> constraintViolation : constraintViolations) {
-				validateError.append("属性：").append(constraintViolation.getPropertyPath()).append("报错！")
-						.append(constraintViolation.getMessage()).append(";");
-			}
-			throw new ServiceException(validateError.toString());
-		}
+//		Set<ConstraintViolation<ModelType>> constraintViolations = this.validator.validate(t, new Class[0]);
+//		if (constraintViolations.size() > 0) {
+//			StringBuilder validateError = new StringBuilder();
+//			for (ConstraintViolation<?> constraintViolation : constraintViolations) {
+//				validateError.append("属性：").append(constraintViolation.getPropertyPath()).append("报错！")
+//						.append(constraintViolation.getMessage()).append(";");
+//			}
+//			throw new ServiceException(validateError.toString());
+//		}
 	}
 
 	public <ModelType> int deleteById(ModelType modelType) throws ServiceException {

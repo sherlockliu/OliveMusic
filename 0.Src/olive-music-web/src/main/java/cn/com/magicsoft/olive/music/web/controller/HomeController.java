@@ -6,6 +6,7 @@ import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
 
@@ -21,6 +22,12 @@ public class HomeController {
 	@RequestMapping(value = "/index")
 	public String index() {
 		return "/home/index";
+	}
+	
+	@RequestMapping(value = "/dev")
+	@ResponseBody
+	public String dev() {
+		return "dev";
 	}
 	
 	@RequestMapping(value = "/login")
