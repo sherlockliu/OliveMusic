@@ -58,9 +58,9 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 
 	private void resetThreadName(HttpServletRequest request) {
 		ApplicationContext.current().setValue("user", "");
-		// http-bio-3810-exec-11;
-		if (request.getSession(false) == null)
+		if (request.getSession(false) == null){
 			return;
+		}
 		String uname = "";
 		SecurityUser user = Authorization.getUser();
 		Thread thread = Thread.currentThread();
@@ -76,14 +76,6 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 		ApplicationContext.current().setValue("thread.id", threadName);
 	}
 
-	/**
-	 * (non-Javadoc)
-	 * 
-	 * @see com.yougou.logistics.base.web.interceptor.AnnotationBasedIgnoreableInterceptor#preHandleInternal(javax.servlet.http.HttpServletRequest,
-	 *      javax.servlet.http.HttpServletResponse, java.lang.Object)
-	 *      {@inheritDoc}
-	 */
-
 	@Override 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
@@ -91,9 +83,9 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 			String ticket = request.getParameter("ticket");
 			ApplicationContext.current().setValue("ticket", ticket);
 		}
-		if (ApplicationContext.host == null)
+		if (ApplicationContext.host == null){
 			ApplicationContext.host = hostAddress + ":" + request.getLocalPort();
-
+		}
 		response.addHeader("RD", ApplicationContext.host);
 
 		String redirectUrl = logoutUrl;
@@ -106,24 +98,9 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 		if (tempObj == null) {
 			if (System.getProperty("env", "").equals("dev")) {
 				String url = request.getHeader("Origin");
-				String organTypeNo = request.getParameter("$oo");
 				String userId = request.getParameter("$u");
-				String zoneNo = request.getParameter("$z");
-				if( url != null && url.indexOf("dev.wholesale") > 0){
-					userId="1447";//sports/111111
-					organTypeNo="U010102";// 设置本部为体类
-				}else{
-					if (StringUtils.isEmpty(userId))
-						userId = "1374";
-					if (StringUtils.isEmpty(organTypeNo))
-						organTypeNo = "U010101";
-					if (StringUtils.isEmpty(zoneNo))
-						zoneNo = "Z";
-				}
 				SecurityUser u = Authorization.getUser(Integer.parseInt(userId.replace(",", "")));
 				Authorization.setUser(u);
-				Authorization.setCurrentZone(zoneNo);
-
 			} else {
 				ajaxHandle(request, response, redirectUrl);
 				return false;
@@ -197,7 +174,6 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		request.setAttribute("userId", Authorization.getUser().getUserId());
-		request.setAttribute("zoneNo", Authorization.getCurrentZone());
 	}
 
 	@Override

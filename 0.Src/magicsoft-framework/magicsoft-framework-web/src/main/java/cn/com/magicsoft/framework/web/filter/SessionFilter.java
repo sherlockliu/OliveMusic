@@ -27,13 +27,9 @@ public class SessionFilter implements Filter {
 
 	public SessionFilter() {
 		this.sessionKey = null;
-
 		this.expiryKey = null;
-
 		this.cookieDomainKey = "cookieDomain";
-
 		this.cookiePath = "/";
-
 		this.expiry = Integer.valueOf(1800);
 	}
 
@@ -43,8 +39,9 @@ public class SessionFilter implements Filter {
 
 	public void init(FilterConfig filterConfig) throws ServletException {
 		String sessionId = filterConfig.getInitParameter("sessionId");
-		if (StringUtils.isNotEmpty(sessionId))
+		if (StringUtils.isNotEmpty(sessionId)){
 			this.sessionKey = sessionId;
+		}
 		else {
 			this.sessionKey = "session_user";
 		}
@@ -100,8 +97,10 @@ public class SessionFilter implements Filter {
 
 			Cookie expiryCookie = CookieUtils.getCookie(request, this.expiryKey);
 			Cookie cookie = CookieUtils.getCookie(request, this.sessionKey);
-			if ((null != expiryCookie) && (null != cookie) && (StringUtils.isNotEmpty(expiryCookie.getValue()))
-					&& (expiryCookie.getValue().matches("[0-9]*"))) {
+			if ((null != expiryCookie) && 
+				(null != cookie) && 
+				(StringUtils.isNotEmpty(expiryCookie.getValue())) && 
+				(expiryCookie.getValue().matches("[0-9]*"))) {
 				long tempExpiryTime = Long.valueOf(expiryCookie.getValue()).longValue();
 
 				if (tempExpiryTime < System.currentTimeMillis()) {
@@ -111,7 +110,6 @@ public class SessionFilter implements Filter {
 					CookieUtils.addCookie(response, this.expiryKey, expiryTime + "", this.cookiePath, cookieDomain,
 							storeTime);
 				}
-
 			}
 			filterChain.doFilter(new HttpServletRequestWrapper(
 					new CookieModel(this.sessionKey, null, cookieDomain, this.cookiePath, expiryTime, this.expiryKey),

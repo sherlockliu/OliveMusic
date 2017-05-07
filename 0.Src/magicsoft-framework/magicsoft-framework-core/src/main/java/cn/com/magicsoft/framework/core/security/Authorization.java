@@ -12,7 +12,6 @@ import cn.com.magicsoft.framework.core.SpringContext;
 import cn.com.magicsoft.framework.core.Storage;
 
 public class Authorization {
-
 	private static Configration configration;
 
 	// @Resource
@@ -71,14 +70,16 @@ public class Authorization {
 	}
 
 	public static SecurityUser getUser(Integer userId) {
-		if (getProvider() == null)
+		if (getProvider() == null){
 			return null;
+		}
 		 return  getProvider().getUser(userId);	 
 	}
 
 	public static SecurityUser getUser() {
-		if (getProvider() == null)
+		if (getProvider() == null){
 			return null;
+		}
 		SecurityUser user = getProvider().getUser();
 		if (user == null && getConfig().sessionDisable > 0) {
 			logger.info("验证关闭，自动创建用户:" + getConfig().sessionDisable);
