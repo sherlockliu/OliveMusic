@@ -33,7 +33,7 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 	protected String systemId = "16";
 
 	@Value("${area.system.id}")
-	protected String areaSystemId = "17";// mdm system_id
+	protected String areaSystemId = "17";
 
 	protected static final XLogger logger = XLoggerFactory.getXLogger(AuthorizationProviderImpl.class);
 
@@ -167,6 +167,7 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 //			user.setOrganTypeNo(u.getOrganTypeNo());
 //			user.setOrganLevel(u.getOrganLevel());
 //			user.setUsername(u.getUserName());
+//			TODO.GetUser
 		} catch (Exception e) {
 			logger.error("获取用户信息错误", e);
 		}
