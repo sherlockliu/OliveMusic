@@ -24,12 +24,12 @@ import cn.com.magicsoft.olive.music.manager.api.OliveAlbumManager;
  */
 @Controller
 @RequestMapping("/olive_album")
-public class OliveAlbumController extends BaseCrudController {
+public class OliveAlbumController {//extends BaseCrudController {
     @Resource
     private OliveAlbumManager oliveAlbumManager;
-
-    @Override
-    public CrudInfo init() {
-        return new CrudInfo("olive_album/",oliveAlbumManager);
-    }
+//
+//    @Override
+//    public CrudInfo init() {
+//        return new CrudInfo("olive_album/",oliveAlbumManager);
+//    }
 }

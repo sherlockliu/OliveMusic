@@ -12,12 +12,12 @@
 		beans -->
 	<import resource="classpath*:META-INF/spring-olive-conf.xml"/>
 	
-	<!-- <import resource="classpath:META-INF/spring-backend-web-default.xml" /> -->
+	<import resource="classpath*:META-INF/spring-framework-web.xml" />
 	
 	<import resource="classpath*:META-INF/spring-olive-manager.xml" />
 	
 	<!-- 扫描本工程下的bean  -->
-	<context:component-scan base-package="cn.com.magicsoft.olive.music.web" />
+	<context:component-scan base-package="cn.com.magicsoft.olive.music.web.controller" />
 	
 	<!-- 设置freeMarker的配置文件路径 -->
 	<bean id="freemarkerConfiguration"

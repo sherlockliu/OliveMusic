@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
@@ -23,13 +22,9 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-import org.junit.experimental.theories.Theories;
-import org.slf4j.ext.XLogger;
-import org.slf4j.ext.XLoggerFactory;
 import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -57,8 +52,6 @@ public abstract class BaseCrudController<ModelType> {
 	protected void initConfig() {
 		this.crudInfo = init();
 		this.manager = this.crudInfo.getManager();
-//		this.controllerName = "".equals(this.crudInfo.getName())?this.manager.toString():this.crudInfo.getName();
-//		this.Logger = XLoggerFactory.getXLogger(this.controllerName);
 	}
 
 

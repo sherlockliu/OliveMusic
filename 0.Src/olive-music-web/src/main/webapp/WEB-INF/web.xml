@@ -83,18 +83,17 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	 <!--
 	<filter>
 		<display-name>sessionFilter</display-name>
 		<filter-name>sessionFilter</filter-name>
-		<filter-class>com.yougou.logistics.base.web.filter.SessionFilter</filter-class>
+		<filter-class>cn.com.magicsoft.framework.web.filter.SessionFilter</filter-class>
 		<init-param>
 			<param-name>sessionId</param-name>
 			<param-value>session_user</param-value>
 		</init-param>
 		<init-param>
 			<param-name>cookieDomain</param-name>
-			<param-value>.belle.net.cn</param-value>
+			<param-value>.com.cn</param-value>
 		</init-param>
 		<init-param>
 			<param-name>cookiePath</param-name>
@@ -108,7 +107,7 @@
 	<filter-mapping>
 		<filter-name>sessionFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> thiry minutes -->
+	</filter-mapping> <!-- thiry minutes -->  
 
 	<!-- Processes application requests -->
 	<servlet>

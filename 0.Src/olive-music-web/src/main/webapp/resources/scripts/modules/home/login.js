@@ -7,12 +7,12 @@ define(['jQuery','olive','serviceFactory','overlay','services/authenticationServ
             $('#' + id).addClass('visible');
         };
         loginController.login = function () {
-            let dto = {};
+            var dto = {};
             dto.userAccount = $('#userAccount').val();
             dto.password = $('#password').val();
             dto.isKeepLogin = $('#isPersistent')[0].checked;
             console.log(dto);
-            //if ($('#loginForm').valid()) {
+            //if ($('#loginForm').valid()) { TODO
             if (true) {
                 $('#login-box').overlay('load');
                 setTimeout(function () {

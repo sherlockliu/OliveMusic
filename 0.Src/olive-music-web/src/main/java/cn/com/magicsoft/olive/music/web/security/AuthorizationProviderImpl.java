@@ -29,16 +29,14 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 	protected static final String SESSION_SYSTEMID = "systemid";
 	protected static final String SESSION_AREASYSTEMID = "areasystemid";
 	protected ThreadLocal<SecurityUser> localUser = new ThreadLocal<>();
+	
 	@Value("${system.id}")
 	protected String systemId = "16";
 
 	@Value("${area.system.id}")
-	protected String areaSystemId = "17";// mdm system_id
+	protected String areaSystemId = "17";
 
 	protected static final XLogger logger = XLoggerFactory.getXLogger(AuthorizationProviderImpl.class);
-
-//	@Autowired(required = false)
-//	private AuthorityUserApi userApi;
 
 	private HttpServletRequest getRequest() {
 		if (RequestContextHolder.getRequestAttributes() == null)
@@ -125,15 +123,14 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 			if ("dev".equalsIgnoreCase(System.getProperty("env")))
 				user = (SecurityUser) session.getAttribute("user");
 			if (user == null) {
-				HttpSessionExtendWrapper session2 = (HttpSessionExtendWrapper) session;
-				user = (SecurityUser) session2.getAttribute(SESSION_USER, false);
+				HttpSessionExtendWrapper sessionWrapper = (HttpSessionExtendWrapper) session;
+				user = (SecurityUser) sessionWrapper.getAttribute(SESSION_USER, false);
 				session.setAttribute("user", user);
 			}
 			return user;
 		} else {
 			return localUser.get();
 		}
-
 	}
 
 	@Override
@@ -141,8 +138,9 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 		HttpServletRequest req = getRequest();
 		if (req != null && user != null) {
 			HttpSession session = req.getSession();
-			if ("dev".equalsIgnoreCase(System.getProperty("env")))
+			if ("dev".equalsIgnoreCase(System.getProperty("env"))){
 				session.setAttribute("user", user);
+			}
 			session.setAttribute(SESSION_USER, user);
 		} else {
 			localUser.set(user);
@@ -167,6 +165,7 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 //			user.setOrganTypeNo(u.getOrganTypeNo());
 //			user.setOrganLevel(u.getOrganLevel());
 //			user.setUsername(u.getUserName());
+//			TODO.GetUser
 		} catch (Exception e) {
 			logger.error("获取用户信息错误", e);
 		}
