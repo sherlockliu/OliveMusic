@@ -114,13 +114,6 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 		}
 		 
 		ApplicationContext.current().clear();
-		if (request.getSession() != null) {
-			Cookie cookie = CookieUtils.getCookie(request, "zone");
-			if (cookie != null) {
-				String zone = cookie.getValue();
-				Authorization.setCurrentZone(zone);
-			}
-		}
 		resetThreadName(request);
 		return true;
 	}
@@ -181,5 +174,4 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 			throws Exception { 
 		
 	}
-
 }

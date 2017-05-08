@@ -1,8 +1,6 @@
 package cn.com.magicsoft.olive.music.web.controller;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -16,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.magicsoft.framework.core.exception.ManagerException;
+import cn.com.magicsoft.framework.core.security.ITicket;
+import cn.com.magicsoft.framework.core.security.SecurityUser;
 import cn.com.magicsoft.framework.core.utils.EncryptUtils;
 import cn.com.magicsoft.framework.web.controller.BaseCrudController;
+import cn.com.magicsoft.framework.web.security.AuthorizationManager;
 import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
 import cn.com.magicsoft.olive.music.model.SysInternalUser;
+import cn.com.magicsoft.olive.music.web.security.OliveTicket;
 
 /**
  * ��д�������; 
@@ -55,11 +57,14 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
 		Map<String,Object> params = builderParams(req, model);
 		Map<String, Object> result = new HashMap<String,Object>();
 		try {
-			this.decoratePwd(params);
-			params.put("invalid","0");
-			List<SysInternalUser> users = this.sysInternalUserManager.findByBiz(null, params);
-			if(users!=null && users.size()>0){
+			ITicket ticket = new OliveTicket(params.get("userAccount").toString(), 
+					EncryptUtils.md5(params.get("password").toString()), true);
+			
+			SecurityUser user = AuthorizationManager.login(ticket);
+			if(user!= null){
 				result.put("success",true);
+			}else{
+				result.put("success",false);
 			}
 		} catch (Exception e) {
 			logger.error("", e);
@@ -67,16 +72,4 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
 		}
 		return result;
 	}
-    
-    private void decoratePwd(Map<String,Object> params) throws NoSuchAlgorithmException{
-    	if(null != params){
-    		String key = "password";
-    		if(params.containsKey(key)){
-    			String pwd = (String) params.get(key);
-    			String md5 = EncryptUtils.md5(pwd);
-				params.remove(key);
-				params.put(key, md5);
-    		}
-    	}
-    }
 }

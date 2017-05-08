@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 
+import cn.com.magicsoft.framework.core.PublicContants;
 import cn.com.magicsoft.framework.core.model.CookieModel;
 import cn.com.magicsoft.framework.core.utils.CookieUtils;
 
@@ -36,23 +37,14 @@ public class SessionFilter implements Filter {
 	public static String getCookieDomain() {
 		return cookieDomain;
 	}
-
+	
 	public void init(FilterConfig filterConfig) throws ServletException {
 		String sessionId = filterConfig.getInitParameter("sessionId");
-		if (StringUtils.isNotEmpty(sessionId)){
-			this.sessionKey = sessionId;
-		}
-		else {
-			this.sessionKey = "session_user";
-		}
+		sessionId = StringUtils.isNotEmpty(sessionId)?sessionId:PublicContants.SESSION_USER;
 
 		String expiryKey = filterConfig.getInitParameter("expiryKey");
-		if (StringUtils.isNotEmpty(expiryKey))
-			this.expiryKey = expiryKey;
-		else {
-			this.expiryKey = "expiry_key";
-		}
-
+		this.expiryKey = StringUtils.isNotEmpty(expiryKey)?expiryKey:PublicContants.EXPIRY_KEY;
+		
 		String cookieDomain = System.getProperty(this.cookieDomainKey);
 		if (StringUtils.isEmpty(cookieDomain)) {
 			cookieDomain = filterConfig.getInitParameter(this.cookieDomainKey);
@@ -67,8 +59,9 @@ public class SessionFilter implements Filter {
 		}
 
 		String expiry = filterConfig.getInitParameter("expiry");
-		if ((!(StringUtils.isNotEmpty(expiry))) || (!(expiry.matches("^([0-9]*)"))))
+		if ((!(StringUtils.isNotEmpty(expiry))) || (!(expiry.matches("^([0-9]*)")))){
 			return;
+		}
 		this.expiry = Integer.valueOf(Integer.parseInt(expiry));
 	}
 
@@ -118,8 +111,13 @@ public class SessionFilter implements Filter {
 	}
 
 	public boolean excludes(String url) {
-		return ((url.endsWith(".gif")) || (url.endsWith(".jpg")) || (url.endsWith(".png")) || (url.endsWith(".bmp"))
-				|| (url.endsWith(".css")) || (url.endsWith(".js")) || (url.endsWith(".jsx")));
+		return ((url.endsWith(".gif")) || 
+				(url.endsWith(".jpg")) || 
+				(url.endsWith(".png")) || 
+				(url.endsWith(".bmp")) || 
+				(url.endsWith(".css")) || 
+				(url.endsWith(".js"))  || 
+				(url.endsWith(".jsx")));
 	}
 
 	public void destroy() {

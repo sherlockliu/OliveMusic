@@ -13,8 +13,7 @@
 	<!-- Activates scanning of @Service -->
 	<context:component-scan base-package="cn.com.magicsoft.framework.web.controller">
 	</context:component-scan>
-	
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<!-- <mvc:resources mapping="/resources/**" location="/resources/" /> -->
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.mvc.WebContentInterceptor">
 			<property name="cacheSeconds" value="0" />
@@ -36,4 +35,6 @@
 			class="cn.wonhigh.retail.backend.web.interceptor.ModuleVerifyInterceptor">
 		</bean> -->
 	</mvc:interceptors>	
+	
+	<bean id="springContext" class="cn.com.magicsoft.framework.core.SpringContext"></bean>
 </beans>

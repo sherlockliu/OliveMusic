@@ -37,3 +37,4 @@ target/*
 *.MF
 */target/*
 
+0.Src/olive-music-dal/src/main/resources/META-INF/spring-olive-conf.xml

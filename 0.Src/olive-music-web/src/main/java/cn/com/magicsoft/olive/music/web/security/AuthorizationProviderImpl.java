@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +19,11 @@ import cn.com.magicsoft.framework.core.PublicContants;
 import cn.com.magicsoft.framework.core.Storage;
 import cn.com.magicsoft.framework.core.security.Authorization;
 import cn.com.magicsoft.framework.core.security.AuthorizationProvider;
+import cn.com.magicsoft.framework.core.security.ITicket;
 import cn.com.magicsoft.framework.core.security.SecurityUser;
 import cn.com.magicsoft.framework.web.filter.HttpSessionExtendWrapper;
+import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
+import cn.com.magicsoft.olive.music.model.SysInternalUser;
 
 @Component(value = "authorizationProvider")
 public class AuthorizationProviderImpl implements AuthorizationProvider {
@@ -29,6 +33,9 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 	protected static final String SESSION_SYSTEMID = "systemid";
 	protected static final String SESSION_AREASYSTEMID = "areasystemid";
 	protected ThreadLocal<SecurityUser> localUser = new ThreadLocal<>();
+	
+	@Resource
+	private SysInternalUserManager userManager;
 	
 	@Value("${system.id}")
 	protected String systemId = "16";
@@ -159,19 +166,30 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 	public SecurityUser getUser(Integer userId) {
 		SecurityUser user = new SecurityUser();
 		try {
-//			AuthorityUser u = userApi.findAuthorityUserById(userId);
-//			user.setLoginName(u.getLoginName());
-//			user.setOrganizNo(u.getOrganNo());
-//			user.setOrganTypeNo(u.getOrganTypeNo());
-//			user.setOrganLevel(u.getOrganLevel());
-//			user.setUsername(u.getUserName());
-//			TODO.GetUser
+			Map<String,Object> params = new HashMap<String,Object>();
+			params.put("id",userId);
+			SysInternalUser internalUser = this.userManager.findUserById(userId);
+			user.setUserName(internalUser.getUserName());
 		} catch (Exception e) {
 			logger.error("获取用户信息错误", e);
 		}
 		user.setUserId(userId);
 		return user;
-
+	}
+	
+	@Override
+	public SecurityUser getUser(ITicket ticket) {
+		SecurityUser user = new SecurityUser();
+		try {
+			SysInternalUser internalUser = this.userManager.findUserByTicket(ticket);
+			if(internalUser!=null){
+				user.setUserId(internalUser.getUserId());
+				user.setUserName(internalUser.getUserName());
+			}
+		} catch (Exception e) {
+			logger.error("获取用户信息错误", e);
+		}
+		return user;
 	}
 	
 	@Override
@@ -179,5 +197,4 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

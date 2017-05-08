@@ -1,6 +1,9 @@
 package cn.com.magicsoft.olive.music.manager.api;
 
+import cn.com.magicsoft.framework.core.exception.ManagerException;
+import cn.com.magicsoft.framework.core.security.ITicket;
 import cn.com.magicsoft.framework.manager.BaseCrudManager;
+import cn.com.magicsoft.olive.music.model.SysInternalUser;
 
 /**
  * ��д�������; 
@@ -17,4 +20,8 @@ import cn.com.magicsoft.framework.manager.BaseCrudManager;
  * 
  */
 public interface SysInternalUserManager extends BaseCrudManager {
+	
+	SysInternalUser findUserByTicket(ITicket ticket) throws ManagerException;
+	
+	SysInternalUser findUserById(Integer id)  throws ManagerException;
 }

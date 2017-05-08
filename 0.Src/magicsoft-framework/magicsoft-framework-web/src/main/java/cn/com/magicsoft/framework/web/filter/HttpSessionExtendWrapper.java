@@ -254,7 +254,7 @@ public class HttpSessionExtendWrapper extends HttpSessionWrapper {
 			} catch (IllegalArgumentException e) {
 				logger.error("", e);
 			}
-
+			this.domain = "localhost";
 			CookieUtils.addCookie(this.res, name, v, this.path, this.domain, Integer.valueOf(storeTime));
 			CookieUtils.addCookie(this.res, this.expiryKey, this.expiry + "", this.path, this.domain,
 					Integer.valueOf(storeTime));

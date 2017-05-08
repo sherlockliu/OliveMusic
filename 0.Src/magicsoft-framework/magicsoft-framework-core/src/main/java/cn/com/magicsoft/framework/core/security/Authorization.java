@@ -7,16 +7,15 @@ import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.util.StringUtils;
 
-import cn.com.magicsoft.framework.core.ApplicationContext;
 import cn.com.magicsoft.framework.core.SpringContext;
 import cn.com.magicsoft.framework.core.Storage;
 
 public class Authorization {
-	private static Configration configration;
+	private static Configration configration = null;
 
 	// @Resource
 	private static AuthorizationProvider authorizationProvider = null;
-	private static DataAccessProvider dataAccessProvider;
+//	private static DataAccessProvider dataAccessProvider;
 
 	protected static final XLogger logger = XLoggerFactory.getXLogger(Authorization.class);
 
@@ -27,7 +26,7 @@ public class Authorization {
 		return authorizationProvider;
 	}
 
-	private static Storage storage;
+	private static Storage storage = null;
 
 	public static Storage getStorage() {
 		if (storage == null){
@@ -36,7 +35,7 @@ public class Authorization {
 		return storage;
 	}
 
-	private static RoleAccessProvider roleProvider;
+	private static RoleAccessProvider roleProvider=null;
 
 	private static RoleAccessProvider getRoleProvider() {
 		if (roleProvider == null){
@@ -57,18 +56,6 @@ public class Authorization {
 		return configration;
 	}
 
-	private static DataAccessProvider getDataAccessProvider() {
-		if (dataAccessProvider == null) {
-			if (SpringContext.containsBean("dataAccessProvider")){
-				dataAccessProvider = (DataAccessProvider) SpringContext.getBean("dataAccessProvider");
-			}
-			else{
-				dataAccessProvider = new EmptyDataAccessProvider();
-			}
-		}
-		return dataAccessProvider;
-	}
-
 	public static SecurityUser getUser(Integer userId) {
 		if (getProvider() == null){
 			return null;
@@ -81,11 +68,12 @@ public class Authorization {
 			return null;
 		}
 		SecurityUser user = getProvider().getUser();
-		if (user == null && getConfig().sessionDisable > 0) {
-			logger.info("验证关闭，自动创建用户:" + getConfig().sessionDisable);
+		if (user == null){// && getConfig().sessionDisable > 0) {
+//			logger.info("验证关闭，自动创建用户:" + getConfig().sessionDisable);
+			logger.info("验证关闭，自动创建游客用户");
 			user = new SecurityUser();
-			user.setUserId(getConfig().sessionDisable);
-			user.setUserName("超级管理员");
+			user.setUserId(0);//TODO, read from configuration.
+			user.setUserName("Guest");
 			getProvider().setUser(user);
 			clear();
 		}
@@ -93,33 +81,34 @@ public class Authorization {
 	}
 
 	public static void setUser(SecurityUser val) {
-		if (getProvider() == null)
+		if (getProvider() == null){
 			return;
+		}
 		clear();
 		getProvider().setUser(val);
 	}
 
 	public static void signout() {
-		if (getProvider() == null)
+		if (getProvider() == null){
 			return;
+		}
 		getProvider().signout();
 		clear();
 	}
 
 	private static void clear() {
-		if (getProvider() == null)
+		if (getProvider() == null){
 			return;
-		if (Authorization.getUser() != null)
-			Authorization.setCurrentZone(null);
-		getStorage().invalide(null);
+		}
+//		getStorage().invalide(null);
 		getProvider().clear();
-		getRoleProvider().clear();
-		getDataAccessProvider().clear();
+//		getRoleProvider().clear();
 	}
 
 	private static boolean valide() {
-		if (getConfig().dataaccess == 0 || getConfig().sessionDisable > 0)
+		if (getConfig().dataaccess == 0 || getConfig().sessionDisable > 0){
 			return true;
+		}
 		if (getProvider() == null)
 			return false;
 		String module = getProvider().getCurrentModule();
@@ -216,49 +205,11 @@ public class Authorization {
 	}
 
 	final static String zone_no_key = "z_";
-
-	public static void setCurrentZone(String zoneNo) {
-		ApplicationContext.current().setValue("zone", zoneNo);
-		// String sessionId =
-		// ApplicationContext.current().getValue("sessionid");
-		// List<String> zone = getAccessData(DataAccessEnum.ZONE);
-		// if( zoneNo != null && zone !=null && zone.indexOf(zoneNo) < 0 )
-		// throw new IndexOutOfBoundsException("当前用户没有" + zoneNo + "的权限");
-		getStorage().set(zone_no_key, zoneNo);
-	}
-
-	public static String getCurrentZone() {
-		String zone = ApplicationContext.current().getValue("zone");
-		if (zone != null)
-			return zone;
-		Object val = getStorage().get(zone_no_key);
-		if (val == null)
-			return null;
-		else
-			return String.valueOf(val);
-	}
-
-	/**
-	 * 
-	 * @param name
-	 *            ref DataAccessEnum
-	 * @return
-	 */
-	public static List<String> getAccessData(String name) {
-		return getDataAccessProvider().getAccessData(name);
-	}
-
-	public static String getAccessDataString(String name) {
-		return getAccessDataString(name, false);
-	}
-
-	public static String getAccessDataString(String name, boolean isCondition) {
-		List<String> result = getAccessData(name);
-		if (result == null)
-			return null;
-		if (!isCondition)
-			return org.apache.commons.lang.StringUtils.join(result, ",");
-		else
-			return "'" + org.apache.commons.lang.StringUtils.join(result, "','") + "'";
+	
+	public static SecurityUser getUser(ITicket ticket) {
+		if(getProvider() != null){
+			return getProvider().getUser(ticket);
+		}
+		return null;
 	}
 }

@@ -28,4 +28,6 @@ public interface AuthorizationProvider {
 	List<String> getRoles();
 	
 	List<String> getFunctionItems();
+
+	SecurityUser getUser(ITicket ticket);
 }

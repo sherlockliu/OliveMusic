@@ -64,4 +64,10 @@ public class EmptyAuthorizationProvider implements AuthorizationProvider {
 		return null;
 	}
 
+	@Override
+	public SecurityUser getUser(ITicket ticket) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -17,7 +17,7 @@
 	<import resource="classpath*:META-INF/spring-olive-manager.xml" />
 	
 	<!-- 扫描本工程下的bean  -->
-	<context:component-scan base-package="cn.com.magicsoft.olive.music.web.controller" />
+	<context:component-scan base-package="cn.com.magicsoft.olive.music.web" />
 	
 	<!-- 设置freeMarker的配置文件路径 -->
 	<bean id="freemarkerConfiguration"
@@ -83,6 +83,8 @@
 		<property name="suffix" value=".ftl" />
 		<property name="contentType" value="text/html; charset=utf-8" />
 	</bean>
+	
+	<bean id="authorizationProvider" class="cn.com.magicsoft.olive.music.web.security.AuthorizationProviderImpl"></bean>
 	<!--
 	<bean id="initCacheController" class="cn.wonhigh.retail.fas.web.controller.InitCacheController" init-method="init" ></bean>
 	<bean id="multipartResolver"
