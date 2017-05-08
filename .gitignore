@@ -33,4 +33,6 @@ Servers/*
 target/*
 0.src/**/.settings/*
 0.Src/olive-music-web/src/main/webapp/.idea/*
-0.Src/olive-music-web/src/main/.idea/vcs.xml
+0.Src/olive-music-web/src/main/.idea/*
+*.MF
+
