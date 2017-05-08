@@ -35,4 +35,5 @@ target/*
 0.Src/olive-music-web/src/main/webapp/.idea/*
 0.Src/olive-music-web/src/main/.idea/*
 *.MF
+*/target/*
 
