@@ -50,6 +50,8 @@
 <script type="text/javascript" src="/olive/resources/asserts/scripts/ace.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/bootbox.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jquery.validate.js?version=${version}"></script>
+<script type="text/javascript" src="/olive/resources/asserts/scripts/fuelux/fuelux.spinner.js?version=${version}"></script>
+<script type="text/javascript" src="/olive/resources/asserts/scripts/spin.min.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/seajs/2.2.0/sea-debug.js?version=${version}" ></script>
 <!-- olive scripts -->
 <script type="text/javascript" src="/olive/resources/scripts/boot.js?version=${version}" ></script>
@@ -64,6 +66,25 @@
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.resource.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.selectBox.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.utils.js?version=${version}"></script>
+
+<style>
+	.page-content-mordor {
+		background: #ffffff;
+		margin: 0;
+		padding: 8px 20px 24px 8px;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function () {
+		try{
+			if(window !== top){
+				parent.homeController.stopSpinner();
+			}
+		}catch(e){
+			console.error(e);
+		}
+	})
+</script>
 
 
 

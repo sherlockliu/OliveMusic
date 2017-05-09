@@ -1,9 +1,10 @@
 /**
  * Created by user on 2017/4/8.
  */
-define(function(require,exports,module){
+define(function (require, exports, module) {
     var spinner;
     var isSpinnerClosed = true;
+
     function display() {
         var opts = {
             lines: 13, // loading小块的数量
@@ -28,12 +29,14 @@ define(function(require,exports,module){
         }
         isSpinnerClosed = false;
     }
+
     function hide() {
         spinner.stop();
         isSpinnerClosed = true;
     }
+
     module.exports = {
-        hide:hide,
-        display:display
-    }
+        hide: hide,
+        display: display
+    };
 })

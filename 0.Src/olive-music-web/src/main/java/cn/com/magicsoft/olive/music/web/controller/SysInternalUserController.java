@@ -72,4 +72,11 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
 		}
 		return result;
 	}
+    
+    @RequestMapping(value = "/logOut")
+   	@ResponseBody
+   	public String logOut(HttpServletRequest req, Model model) throws ManagerException {
+   		AuthorizationManager.logout();
+   		return "true";
+   	}
 }

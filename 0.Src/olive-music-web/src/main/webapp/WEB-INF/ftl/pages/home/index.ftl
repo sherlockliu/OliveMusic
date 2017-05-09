@@ -8,11 +8,11 @@
     <#include "/WEB-INF/ftl/shared/header.ftl" >
     <script>
             var homeController;
-            seajs.use(['module/home/index'], function(index) {
+            seajs.use(['overlay','module/home/index'], function(overlay,index) {
                 homeController = index;
                 homeController.init();
             });
-        </script>
+    </script>
 </head>
 <body>
     <div class="navbar navbar-default" id="navbar">

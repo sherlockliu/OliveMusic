@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.com.magicsoft.framework.core.exception.ManagerException;
 import cn.com.magicsoft.framework.manager.BaseCrudManager;
-import cn.com.magicsoft.olive.music.dto.MenuInfoExt;
+import cn.com.magicsoft.olive.music.model.SysMenuInfo;
 
 /**
  * ��д�������; 
@@ -22,5 +22,7 @@ import cn.com.magicsoft.olive.music.dto.MenuInfoExt;
  */
 public interface SysMenuInfoManager extends BaseCrudManager {
 	
-	List<MenuInfoExt> getChildMenus(Integer id) throws ManagerException;
+	List<SysMenuInfo> getChildMenus(Integer id) throws ManagerException;
+	
+	List<SysMenuInfo> getMenusByRoleId(List<Integer> roleIds) throws ManagerException;
 }

@@ -1,9 +1,13 @@
 package cn.com.magicsoft.olive.music.service;
 
+import java.util.List;
+
+import cn.com.magicsoft.framework.core.exception.ServiceException;
 import cn.com.magicsoft.framework.service.BaseCrudService;
+import cn.com.magicsoft.olive.music.model.SysMenuInfo;
 
 /**
- * ÇëÐ´³öÀàµÄÓÃÍ¾ 
+ * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ 
  * @author user
  * @date  2017-04-01 17:25:33
  * @version 1.0.0
@@ -17,4 +21,8 @@ import cn.com.magicsoft.framework.service.BaseCrudService;
  * 
  */
 public interface SysMenuInfoService extends BaseCrudService {
+	
+	List<SysMenuInfo> getChildMenus(Integer id) throws ServiceException;
+	
+	List<SysMenuInfo> getMenusByRoleId(List<Integer> roleIds) throws ServiceException;
 }

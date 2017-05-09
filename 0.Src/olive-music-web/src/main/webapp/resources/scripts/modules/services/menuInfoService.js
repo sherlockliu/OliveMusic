@@ -6,10 +6,10 @@ define(['jQuery','AjaxPromise','serviceFactory'],function(require,exports,module
     var AjaxPromise = require('AjaxPromise'),
         serviceFactory = require('serviceFactory'),
         menuInfoService = {};
-    menuInfoService.login = function(data){
+    menuInfoService.getCurrentUserMenuList = function(){
         let promise = new AjaxPromise({
-            url:'menu_info/list'.serverPath(),
-            data:data.data
+            url:'home/getAuthorizationMenuList'.serverPath(),
+            dataType:'JSON'
         })
         return promise;
     }

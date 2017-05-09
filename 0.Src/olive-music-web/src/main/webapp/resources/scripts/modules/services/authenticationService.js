@@ -12,7 +12,14 @@ define(['jQuery','AjaxPromise','serviceFactory'],function(require,exports,module
             data:data.data
         })
         return promise;
-    }
+    };
+    authenticationService.logOut = function(data){
+        let promise = new AjaxPromise({
+            url:'sys_internal_user/logOut'.serverPath(),
+            data:data.data
+        })
+        return promise;
+    };
     serviceFactory.register('authenticationService',authenticationService);
     module.exports = authenticationService;
 })

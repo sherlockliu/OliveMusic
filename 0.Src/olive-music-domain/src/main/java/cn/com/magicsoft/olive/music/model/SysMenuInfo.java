@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * ÇëÐ´³öÀàµÄÓÃÍ¾ 
+ * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ 
  * @author user
  * @date  2017-04-01 17:25:33
  * @version 1.0.0
@@ -19,6 +19,11 @@ import java.util.Date;
  */
 public class SysMenuInfo implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * 
      */
     private Integer menuId;
@@ -64,16 +69,26 @@ public class SysMenuInfo implements Serializable {
     private Byte invalid;
 
     /**
-     * ÐÞ¸ÄÊ±¼ä
+     * ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
      */
     private Date modifyTime;
 
     /**
-     * ´´½¨Ê±¼ä
+     * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
      */
     private Date createTime;
 
-    /**
+    private Byte isParent;
+    
+    public Byte getIsParent() {
+		return isParent;
+	}
+
+	public void setIsParent(Byte isParent) {
+		this.isParent = isParent;
+	}
+
+	/**
      * 
      * {@linkplain #menuId}
      *

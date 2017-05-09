@@ -1,9 +1,12 @@
 package cn.com.magicsoft.olive.music.dal.database;
 
+import java.util.List;
+
 import cn.com.magicsoft.framework.dal.BaseCrudMapper;
+import cn.com.magicsoft.olive.music.model.SysMenuInfo;
 
 /**
- * ÇëÐ´³öÀàµÄÓÃÍ¾ 
+ * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ 
  * @author user
  * @date  2017-04-01 17:25:33
  * @version 1.0.0
@@ -17,4 +20,8 @@ import cn.com.magicsoft.framework.dal.BaseCrudMapper;
  * 
  */
 public interface SysMenuInfoMapper extends BaseCrudMapper {
+
+	List<SysMenuInfo> getChildMenus(Integer id);
+
+	List<SysMenuInfo> getMenusByRoleId(List<Integer> roleIds);
 }

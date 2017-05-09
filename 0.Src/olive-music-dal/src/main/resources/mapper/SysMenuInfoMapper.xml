@@ -13,10 +13,11 @@
     <result column="invalid" property="invalid" jdbcType="TINYINT" />
     <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_parent" property="isParent" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
     menu_id, menu_name, parent_id, menu_url, menu_order, menu_icon, menu_type, is_system, 
-    invalid, modify_time, create_time
+    invalid, modify_time, create_time,is_parent
   </sql>
   <sql id="condition" >
     <if test="null!=params" >
@@ -66,11 +67,11 @@
     INSERT INTO sys_menu_info (menu_id, menu_name, parent_id, 
       menu_url, menu_order, menu_icon, 
       menu_type, is_system, invalid, 
-      modify_time, create_time)
+      modify_time, create_time,is_parent)
     VALUES (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
       #{menuUrl,jdbcType=VARCHAR}, #{menuOrder,jdbcType=TINYINT}, #{menuIcon,jdbcType=VARCHAR}, 
       #{menuType,jdbcType=TINYINT}, #{isSystem,jdbcType=TINYINT}, #{invalid,jdbcType=TINYINT}, 
-      #{modifyTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+      #{modifyTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{isParent,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="cn.com.magicsoft.olive.music.model.SysMenuInfo" >
     INSERT INTO sys_menu_info
@@ -108,6 +109,9 @@
       <if test="createTime != null" >
         create_time,
       </if>
+      <if test="isParent != null">
+      	is_parent
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="menuId != null" >
@@ -142,6 +146,9 @@
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isParent != null" >
+        #{isParent,jdbcType=TINYINT}
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="isParent != null" >
+        is_parent = #{isParent,jdbcType=TINYINT}
+      </if>
     </set>
     WHERE menu_id = #{menuId,jdbcType=INTEGER}
   </update>
@@ -192,7 +202,18 @@
       is_system = #{isSystem,jdbcType=TINYINT},
       invalid = #{invalid,jdbcType=TINYINT},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_parent = #{isParent,jdbcType=TINYINT}
     WHERE menu_id = #{menuId,jdbcType=INTEGER}
   </update>
+  <select id="getChildMenus" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	  select *
+	  from sys_menu_info
+      where parent_id = #{parentId,jdbcType=INTEGER}	
+  </select>
+  <select id="getMenusByRoleId" resultMap="BaseResultMap" parameterType="java.util.List">
+  	    select smi.*
+		from sys_menu_info smi 
+		LEFT JOIN sys_role_menu_info srmi on smi.menu_id = srmi.menu_id
+  </select>
 </mapper>

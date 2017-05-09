@@ -1,10 +1,10 @@
 /**
  * Created by user on 2017/4/8.
  */
-define([],function(require,exports,module){
+define(['jQuery','olive'],function(require,exports,module){
     "use strict";
-    var menuView = (function ($) {
         var instance = {};
+        require('overlay');
         instance.loading = function (containerId) {
             var $view = $('#' + containerId);
             $view.height('50px').overlay('load');
@@ -19,18 +19,18 @@ define([],function(require,exports,module){
                 var container = $('<li></li>');
                 if (index == 0) {
                     container.addClass('active');
-                    instance.setDefaultPage(obj.menuID);
+                    instance.setDefaultPage(obj.menuId);
                 }
 
                 var alink = $('<a href="#"></a>');
-                alink.attr('id', obj.menuID);
-                alink.attr('parentId', obj.parentID);
+                alink.attr('id', obj.menuId);
+                alink.attr('parentId', obj.parentId);
                 var li = $('<i class="' + obj.menuIcon + '"></i>');
                 var span = $('<span class="menu-text">' + obj.menuName + '</span>');
                 alink.append(li);
                 alink.append(span);
-                if (obj.menuURL !== '') {
-                    alink.attr('url', obj.menuURL);
+                if (obj.menuUrl !== '') {
+                    alink.attr('url', obj.menuUrl);
                     alink.attr('onclick', 'return homeController.loadPage(this)');
                 } else {
                     alink.addClass('dropdown-toggle');
@@ -38,11 +38,11 @@ define([],function(require,exports,module){
                 }
                 container.append(alink);
 
-                if (obj.SubMenu != null) {
+                if (obj.subMenu != null) {
                     var subContainer = $('<ul class="submenu"></ul>');
-                    $.each(obj.SubMenu, function (index, obj) {
+                    $.each(obj.subMenu, function (index, obj) {
                         var subli = $('<li></li>');
-                        var subAlink = $('<a href="#" url="' + obj.menuURL + '" onclick="return homeController.loadPage(this)"><i class="' + obj.menuIcon + '"></i>' + obj.menuName + '</a>');
+                        var subAlink = $('<a href="#" url="' + obj.menuUrl + '" onclick="return homeController.loadPage(this)"><i class="' + obj.menuIcon + '"></i>' + obj.menuName + '</a>');
                         subli.append(subAlink);
                         subContainer.append(subli);
                     })
@@ -59,7 +59,6 @@ define([],function(require,exports,module){
             if (defaultPage.length > 0) {
                 defaultPage.click();
             }
-        }
-        return instance;
-    }(window.jQuery))
+        };
+    module.exports = instance;
 })

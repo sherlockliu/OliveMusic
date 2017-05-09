@@ -41,5 +41,4 @@ define(['jQuery'],function(require,exports,module){
         //loadComplete:null
     };
     module.exports = $.fn.overlay;
-    return $.fn.overlay;
 })

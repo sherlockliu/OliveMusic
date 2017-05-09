@@ -2,12 +2,12 @@ package cn.com.magicsoft.framework.core.security;
 
 public class Role {
 	
-	private String roleId;
+	private Integer roleId;
 	private String roleName;
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
-	public void setRoleId(String roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 	public String getRoleName() {

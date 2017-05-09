@@ -55,44 +55,44 @@ VALUES
 	);
 -- 默认菜单
 DELETE FROM `sys_menu_info`;
-INSERT INTO `sys_menu_info`(`menu_id`,`menu_name`,`parent_id`,`menu_url`,`menu_order`,`menu_icon`,`menu_type`,`is_system`,`invalid`,`modify_time`,`create_time`) VALUES
-(1000,'我的桌面',0,'/Home/DashBoard',0,'icon-dashboard',1,1,0,Now(),Now()),
-(1001,'权限管理',0,'',1,'icon-desktop',1,1,0,Now(),Now()),
-(1002,'系统管理',0,'',2,'icon-desktop',1,1,0,Now(),Now()),
-(1003,'站点管理',0,'',3,'icon-desktop',1,1,0,Now(),Now()),
-(1004,'资源管理',0,'',4,'icon-desktop',1,1,0,Now(),Now()),
-(1005,'站点数据管理',0,'',5,'icon-desktop',1,1,0,Now(),Now()),
-(1006,'数据报表',0,'',6,'icon-desktop',1,1,0,Now(),Now()),
+INSERT INTO `sys_menu_info`(`menu_id`,`menu_name`,`parent_id`,`menu_url`,`menu_order`,`menu_icon`,`menu_type`,`is_system`,`invalid`,`modify_time`,`create_time`,`is_parent`) VALUES
+(1000,'我的桌面',0,'/Home/DashBoard',0,'icon-dashboard',1,1,0,Now(),Now(),0),
+(1001,'权限管理',0,'',1,'icon-desktop',1,1,0,Now(),Now(),1),
+(1002,'系统管理',0,'',2,'icon-desktop',1,1,0,Now(),Now(),1),
+(1003,'站点管理',0,'',3,'icon-desktop',1,1,0,Now(),Now(),1),
+(1004,'资源管理',0,'',4,'icon-desktop',1,1,0,Now(),Now(),1),
+(1005,'站点数据管理',0,'',5,'icon-desktop',1,1,0,Now(),Now(),1),
+(1006,'数据报表',0,'',6,'icon-desktop',1,1,0,Now(),Now(),1),
 
 -- 权限管理
-(100100,'后台用户管理',1001,'/InternalUser/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100101,'角色管理',1001,'/Role/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100102,'菜单管理',1001,'/Menu/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
+(100100,'后台用户管理',1001,'/InternalUser/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100101,'角色管理',1001,'/Role/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100102,'菜单管理',1001,'/Menu/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
 
 -- 系统管理
-(100200,'系统设置',1002,'/Blank/Index',0,'icon-desktop',1,1,0,Now(),Now()),
+(100200,'系统设置',1002,'/Blank/Index',0,'icon-desktop',1,1,0,Now(),Now(),0),
 
 -- 站点管理
-(100300,'样式管理',1003,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100301,'图片管理',1003,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100302,'文字管理',1003,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100303,'站点设置',1003,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now()),
+(100300,'样式管理',1003,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100301,'图片管理',1003,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100302,'文字管理',1003,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100303,'站点设置',1003,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now(),0),
 
 -- 资源管理
-(100400,'艺术家管理',1004,'/Artist/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100401,'专辑管理',1004,'/Album/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100402,'类别管理',1004,'/Category/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100403,'标签管理',1004,'/Tag/Index',3,'icon-double-angle-right',1,1,0,Now(),Now()),
+(100400,'艺术家管理',1004,'/Artist/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100401,'专辑管理',1004,'/Album/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100402,'类别管理',1004,'/Category/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100403,'标签管理',1004,'/Tag/Index',3,'icon-double-angle-right',1,1,0,Now(),Now(),0),
 
 -- 站点数据管理
-(100500,'注册用户管理',1005,'/User/Index',0,'icon-desktop',1,1,0,Now(),Now()),
-(100501,'评论管理',1005,'/Blank/Index',1,'icon-desktop',1,1,0,Now(),Now()),
+(100500,'注册用户管理',1005,'/User/Index',0,'icon-desktop',1,1,0,Now(),Now(),0),
+(100501,'评论管理',1005,'/Blank/Index',1,'icon-desktop',1,1,0,Now(),Now(),0),
 
 -- 数据报表
-(100600,'用户报表',1006,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100601,'访问报表',1006,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100602,'下载报表',1006,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100603,'浏览报表',1006,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now());
+(100600,'用户报表',1006,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100601,'访问报表',1006,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100602,'下载报表',1006,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100603,'浏览报表',1006,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now(),0);
 
 /**************************************默认菜单 End*************************************************/
 

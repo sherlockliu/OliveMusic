@@ -1,5 +1,4 @@
-﻿USE `olive_ch`;
-
+﻿
 -- sys_InternalUser 用户信息表
 DROP TABLE IF EXISTS `sys_internal_user`;
 CREATE TABLE IF NOT EXISTS `sys_internal_user` (
@@ -28,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `sys_menu_info` (
 	`invalid` tinyint(4) NOT NULL DEFAULT 0 ,
 	`modify_time` datetime NOT NULL COMMENT '修改时间',
 	`create_time` datetime NOT NULL COMMENT '创建时间',
+	`is_parent` tinyint(4) NOT NULL COMMENT '是否为父菜单',
   PRIMARY KEY (`menu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ALTER TABLE `sys_menu_info` AUTO_INCREMENT 100001;

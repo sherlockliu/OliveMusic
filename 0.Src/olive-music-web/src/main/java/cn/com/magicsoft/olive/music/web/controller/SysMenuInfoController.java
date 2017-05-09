@@ -14,8 +14,8 @@ import cn.com.magicsoft.framework.core.exception.ManagerException;
 import cn.com.magicsoft.framework.core.utils.JsonUtils;
 import cn.com.magicsoft.framework.web.controller.BaseCrudController;
 import cn.com.magicsoft.framework.web.model.ZTreeResponse;
-import cn.com.magicsoft.olive.music.dto.MenuInfoExt;
 import cn.com.magicsoft.olive.music.manager.api.SysMenuInfoManager;
+import cn.com.magicsoft.olive.music.model.SysMenuInfo;
 
 /**
  * ��д�������; 
@@ -42,14 +42,14 @@ public class SysMenuInfoController extends BaseCrudController {
         return new CrudInfo("sys_menu_info/",sysMenuInfoManager);
     }
     
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/getTreeNode")
 	@ResponseBody
     public String getTreeNode(Integer id) throws ManagerException, IOException
     {
-        List<MenuInfoExt> menuInfoList;
+        List<SysMenuInfo> menuInfoList;
         if (id == -1)
         {
-            menuInfoList = new ArrayList<MenuInfoExt>();
+            menuInfoList = new ArrayList<SysMenuInfo>();
             menuInfoList.add(this.createRootNode());
         }
         else
@@ -60,28 +60,28 @@ public class SysMenuInfoController extends BaseCrudController {
         return JsonUtils.toJson(response);
     }
     
-    private List<ZTreeResponse> toZtreeResponse(List<MenuInfoExt> menuInfoList)
+    private List<ZTreeResponse> toZtreeResponse(List<SysMenuInfo> menuInfoList)
     {
         List<ZTreeResponse> response = new ArrayList<ZTreeResponse>();
         if (menuInfoList != null)
         {
-        		for(MenuInfoExt item : menuInfoList){
+        		for(SysMenuInfo item : menuInfoList){
         			ZTreeResponse responseItem = new ZTreeResponse();
-        			responseItem.setId(item.getMenuID());
+        			responseItem.setId(item.getMenuId());
         			responseItem.setName(item.getMenuName());
-        			responseItem.setIsParent(item.getIsParent());
-        			responseItem.setURL(item.getMenuURL());
+        			responseItem.setIsParent(item.getIsParent()==1?true:false);
+        			responseItem.setURL(item.getMenuUrl());
         			response.add(responseItem);
         		}
         }
         return response;
     }
     
-    private MenuInfoExt createRootNode()
+    private SysMenuInfo createRootNode()
     {
-    		MenuInfoExt rootNode = new MenuInfoExt();
-    		rootNode.setIsParent(true);
-    		rootNode.setMenuID(0);
+    		SysMenuInfo rootNode = new SysMenuInfo();
+    		rootNode.setIsParent((byte)1);
+    		rootNode.setMenuId(0);
     		rootNode.setMenuName("olive");
         return rootNode;
     }
