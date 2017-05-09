@@ -6,6 +6,13 @@
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <#include "/WEB-INF/ftl/shared/header.ftl" >
+    <script>
+            var homeController;
+            seajs.use(['module/home/index'], function(index) {
+                homeController = index;
+                homeController.init();
+            });
+        </script>
 </head>
 <body>
     <div class="navbar navbar-default" id="navbar">

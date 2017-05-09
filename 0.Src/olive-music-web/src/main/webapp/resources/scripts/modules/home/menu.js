@@ -3,7 +3,6 @@
  */
 define([],function(require,exports,module){
     "use strict";
-
     var menuView = (function ($) {
         var instance = {};
         instance.loading = function (containerId) {
@@ -20,18 +19,18 @@ define([],function(require,exports,module){
                 var container = $('<li></li>');
                 if (index == 0) {
                     container.addClass('active');
-                    instance.setDefaultPage(obj.MenuID);
+                    instance.setDefaultPage(obj.menuID);
                 }
 
                 var alink = $('<a href="#"></a>');
-                alink.attr('id', obj.MenuID);
-                alink.attr('parentId', obj.ParentID);
-                var li = $('<i class="' + obj.MenuIcon + '"></i>');
-                var span = $('<span class="menu-text">' + obj.MenuName + '</span>');
+                alink.attr('id', obj.menuID);
+                alink.attr('parentId', obj.parentID);
+                var li = $('<i class="' + obj.menuIcon + '"></i>');
+                var span = $('<span class="menu-text">' + obj.menuName + '</span>');
                 alink.append(li);
                 alink.append(span);
-                if (obj.MenuURL !== '') {
-                    alink.attr('url', obj.MenuURL);
+                if (obj.menuURL !== '') {
+                    alink.attr('url', obj.menuURL);
                     alink.attr('onclick', 'return homeController.loadPage(this)');
                 } else {
                     alink.addClass('dropdown-toggle');
@@ -43,7 +42,7 @@ define([],function(require,exports,module){
                     var subContainer = $('<ul class="submenu"></ul>');
                     $.each(obj.SubMenu, function (index, obj) {
                         var subli = $('<li></li>');
-                        var subAlink = $('<a href="#" url="' + obj.MenuURL + '" onclick="return homeController.loadPage(this)"><i class="' + obj.MenuIcon + '"></i>' + obj.MenuName + '</a>');
+                        var subAlink = $('<a href="#" url="' + obj.menuURL + '" onclick="return homeController.loadPage(this)"><i class="' + obj.menuIcon + '"></i>' + obj.menuName + '</a>');
                         subli.append(subAlink);
                         subContainer.append(subli);
                     })

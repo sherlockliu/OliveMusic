@@ -1,6 +1,10 @@
 package cn.com.magicsoft.olive.music.manager.api;
 
+import java.util.List;
+
+import cn.com.magicsoft.framework.core.exception.ManagerException;
 import cn.com.magicsoft.framework.manager.BaseCrudManager;
+import cn.com.magicsoft.olive.music.dto.MenuInfoExt;
 
 /**
  * ��д�������; 
@@ -17,4 +21,6 @@ import cn.com.magicsoft.framework.manager.BaseCrudManager;
  * 
  */
 public interface SysMenuInfoManager extends BaseCrudManager {
+	
+	List<MenuInfoExt> getChildMenus(Integer id) throws ManagerException;
 }
