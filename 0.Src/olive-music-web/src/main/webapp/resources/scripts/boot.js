@@ -11,7 +11,8 @@
                 'olive':'olive/resources/scripts/olive',
                 'overlay':'olive/resources/scripts/lib/magicsoft.ui.overlay',
                 'AjaxPromise':'olive/resources/scripts/lib/magicsoft.io.AjaxPromise',
-                'spinner':'olive/resources/scripts/lib/magicsoft.ui.spinner'
+                'spinner':'olive/resources/scripts/lib/magicsoft.ui.spinner',
+                'grid':'olive/resources/scripts/olive/olive.ui.grid'
             },
             map: [
                 [ /^(.*\.(?:css|js))(.*)$/i, '$1']

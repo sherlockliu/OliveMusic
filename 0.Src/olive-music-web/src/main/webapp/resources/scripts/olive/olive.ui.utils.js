@@ -2,6 +2,7 @@
     "use strict";
     var olive = require('olive'),
         jQuery = require('jQuery');
+
     olive.ui.utils = (function (utils, $) {
         var instance = {};
         function appendFormElement(formId, key, value) {
@@ -22,5 +23,6 @@
         }
         return instance;
     }(olive.ui || {}, jQuery))
+
     module.exports = olive.ui.utils;
 })

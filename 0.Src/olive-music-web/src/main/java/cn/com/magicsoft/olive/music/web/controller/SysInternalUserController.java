@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.poi.ss.formula.functions.Index;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,12 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
     @Override
     public CrudInfo init() {
         return new CrudInfo("sys_internal_user/",sysInternalUserManager);
+    }
+    
+    
+    @RequestMapping(value="/index")
+    public String Index(){
+    	return "/internalUser/internalUser_index";
     }
     
     @RequestMapping(value = "/login")

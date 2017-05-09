@@ -31,6 +31,8 @@
 <script src="/olive/resources/asserts/scripts/html5shiv.js?version=${version}"></script>
 <script src="/olive/resources/asserts/scripts/respond.src.js?version=${version}"></script>
 <![endif]-->
+
+<script type="text/javascript" src="/olive/resources/asserts/scripts/seajs/2.2.0/sea-debug.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/ace-extra.min.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jquery-1.4.4.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jquery-2.0.3.min.js?version=${version}" ></script>
@@ -38,7 +40,7 @@
 <script type="text/javascript" src="/olive/resources/asserts/scripts/typeahead-bs2.min.js?version=${version}" ></script>
 
 <!-- page specific plugin scripts -->
-<script type="text/javascript" src="/olive/resources/asserts/scripts/jqGrid/jquery.jqGrid.min.js?version=${version}"></script>
+<script type="text/javascript" src="/olive/resources/asserts/scripts/jqGrid/jquery.jqGrid.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jqGrid/i18n/grid.locale-cn.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/chosen.jquery.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jquery-ui-1.10.3.full.min.js"></script>
@@ -50,9 +52,9 @@
 <script type="text/javascript" src="/olive/resources/asserts/scripts/ace.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/bootbox.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jquery.validate.js?version=${version}"></script>
-<script type="text/javascript" src="/olive/resources/asserts/scripts/fuelux/fuelux.spinner.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/spin.min.js?version=${version}"></script>
-<script type="text/javascript" src="/olive/resources/asserts/scripts/seajs/2.2.0/sea-debug.js?version=${version}" ></script>
+
+
 <!-- olive scripts -->
 <script type="text/javascript" src="/olive/resources/scripts/boot.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive.js?version=${version}" ></script>

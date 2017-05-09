@@ -1,8 +1,6 @@
-﻿window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
-
-
-(function ($, undefined) {
-    console.log("olivegrid");
+﻿define(['jQuery'],function(require,exports,module){
+    let $ = jQuery;
+    console.log(require('jQuery'));
     $.fn.oliveGrid = function (options) {
         var settings = $.extend({
             datatype: "json",
@@ -29,11 +27,8 @@
                 left: 300
             }
         }, options);
-        //options:gridSelector,pagerSelector,colNames:[],colModel:[],url,height,editurl,caption
-
+        require('asserts/scripts/jqGrid/jquery.jqGrid');
         $(settings.gridSelector).jqGrid(settings);
-
-        //navButtons
         $(settings.gridSelector).jqGrid('navGrid', settings.pagerSelector,
             { 	//navbar options
                 edit: true,
@@ -59,9 +54,9 @@
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />');
                     oliveFormDecorator.decorateEditForm(form,
-                    {
-                        controls: settings.controls
-                    });
+                        {
+                            controls: settings.controls
+                        });
                     form.attr('overflow', 'hidden');
                     (settings.beforeEditShowForm || function () { })();
                 },
@@ -81,9 +76,9 @@
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />').attr('overflow', 'hidden');
                     oliveFormDecorator.decorateEditForm(form,
-                     {
-                         controls: settings.controls
-                     });
+                        {
+                            controls: settings.controls
+                        });
                     form.attr('style', 'width:auto;overflow:hidden;position:relative;height:auto');
 
                     (settings.beforeAddShowForm || function () { })();
@@ -119,9 +114,9 @@
                 ,
                 multipleSearch: true,
                 /**
-                multipleGroup:true,
-                showQuery: true
-                */
+                 multipleGroup:true,
+                 showQuery: true
+                 */
             },
             {
                 //view record form
@@ -147,7 +142,7 @@
             form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
             oliveFormDecorator.decorateEditForm(form,
 
-                           options.controls
+                options.controls
 
             );
         }
@@ -156,34 +151,34 @@
         //or go back to default browser checkbox styles for the grid
         function styleCheckbox(table) {
             /**
-                $(table).find('input:checkbox').addClass('ace')
-                .wrap('<label />')
-                .after('<span class="lbl align-top" />')
-    
-    
-                $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-                .find('input.cbox[type=checkbox]').addClass('ace')
-                .wrap('<label />').after('<span class="lbl align-top" />');
-            */
+             $(table).find('input:checkbox').addClass('ace')
+             .wrap('<label />')
+             .after('<span class="lbl align-top" />')
+
+
+             $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
+             .find('input.cbox[type=checkbox]').addClass('ace')
+             .wrap('<label />').after('<span class="lbl align-top" />');
+             */
         }
 
         //unlike navButtons icons, action icons in rows seem to be hard-coded
         //you can change them like this in here if you want
         function updateActionIcons(table) {
             /**
-            var replacement =
-            {
-                'ui-icon-pencil' : 'icon-pencil blue',
-                'ui-icon-trash' : 'icon-trash red',
-                'ui-icon-disk' : 'icon-ok green',
-                'ui-icon-cancel' : 'icon-remove red'
-            };
-            $(table).find('.ui-pg-div span.ui-icon').each(function(){
+             var replacement =
+             {
+                 'ui-icon-pencil' : 'icon-pencil blue',
+                 'ui-icon-trash' : 'icon-trash red',
+                 'ui-icon-disk' : 'icon-ok green',
+                 'ui-icon-cancel' : 'icon-remove red'
+             };
+             $(table).find('.ui-pg-div span.ui-icon').each(function(){
                 var icon = $(this);
                 var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
                 if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
             })
-            */
+             */
         }
 
         //replace icons with FontAwesome icons like above
@@ -207,9 +202,7 @@
             $('.navtable .ui-pg-button').tooltip({ container: 'body' });
             $(table).find('.ui-pg-div').tooltip({ container: 'body' });
         }
-
-        //var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
-
-
     }
-})(window.jQuery);
+    module.exports = $.fn.oliveGrid;
+})
+
