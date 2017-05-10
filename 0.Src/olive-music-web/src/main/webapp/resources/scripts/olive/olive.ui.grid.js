@@ -1,4 +1,5 @@
-﻿define(function(require,exports,module){
+﻿define(['overlay','olivelib/olive.ui.decorator'],function(require,exports,module){
+    "use strict";
     $.fn.oliveGrid = function (options) {
         var settings = $.extend({
             datatype: "json",
@@ -48,9 +49,11 @@
                 width: settings.formWidth || 'auto',
                 height: settings.formHeight || 'auto',
                 beforeShowForm: function (e) {
-                    var form = $(e[0]);
+                    var form = $(e[0]),
+                        decorator = require('olivelib/olive.ui.decorator');
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />');
-                    oliveFormDecorator.decorateEditForm(form,
+
+                    decorator.decorateEditForm(form,
                         {
                             controls: settings.controls
                         });
@@ -59,6 +62,7 @@
                 },
                 afterSubmit: settings.afterEditSubmit || function (response, postdata) { return [true, "", 0]; },
                 onclickSubmit: function () {
+                    require('overlay');
                     $('#editmodgrid-table').overlay('load');
                 }
             }, {
@@ -69,9 +73,10 @@
                 recreateForm: true,
                 viewPagerButtons: false,
                 beforeShowForm: function (e) {
-                    var form = $(e[0]);
+                    var form = $(e[0]),
+                        decorator = require('olivelib/olive.ui.decorator');
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />').attr('overflow', 'hidden');
-                    oliveFormDecorator.decorateEditForm(form,
+                    decorator.decorateEditForm(form,
                         {
                             controls: settings.controls
                         });
@@ -81,17 +86,20 @@
                 },
                 afterSubmit: settings.afterAddSubmit || function (response, postdata) { return [true, "", 0]; },
                 onclickSubmit: function () {
+                    require('overlay');
                     $('#editmodgrid-table').overlay('load');
                 }
             }, {
                 //delete record form
                 recreateForm: true,
                 beforeShowForm: function (e) {
-                    var form = $(e[0]);
-                    if (form.data('styled')) return false;
-
+                    var form = $(e[0]),
+                        decorator = require('olivelib/olive.ui.decorator');
+                    if (form.data('styled')) {
+                        return false;
+                    }
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-                    oliveFormDecorator.decorateDeleteForm(form);
+                    decorator.decorateDeleteForm(form);
                     form.data('styled', true);
                 }
             }, {
@@ -103,7 +111,8 @@
                     style_search_form(form);
                 },
                 afterRedraw: function () {
-                    oliveFormDecorator.decorateSearchFilters($(this));
+                    var decorator = require('olivelib/olive.ui.decorator');
+                    decorator.decorateSearchFilters($(this));
                 }
                 ,
                 multipleSearch: true,
@@ -121,22 +130,24 @@
             }
         )
         function beforeDeleteCallback(e) {
-            var form = $(e[0]);
-            if (form.data('styled')) return false;
+            var form = $(e[0]),
+                decorator = require('olivelib/olive.ui.decorator');
+            if (form.data('styled')) {
+                return false;
+            }
 
             form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-            oliveFormDecorator.decorateDeleteForm(form);
+            decorator.decorateDeleteForm(form);
 
             form.data('styled', true);
         }
 
         function beforeEditCallback(e) {
-            var form = $(e[0]);
+            var form = $(e[0]),
+                decorator = require('olivelib/olive.ui.decorator');
             form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-            oliveFormDecorator.decorateEditForm(form,
-
+            decorator.decorateEditForm(form,
                 options.controls
-
             );
         }
         //it causes some flicker when reloading or navigating grid
@@ -190,7 +201,6 @@
                 if ($class in replacement) icon.attr('class', 'ui-icon ' + replacement[$class]);
             })
         }
-
         function enableTooltips(table) {
             $('.navtable .ui-pg-button').tooltip({ container: 'body' });
             $(table).find('.ui-pg-div').tooltip({ container: 'body' });

@@ -39,7 +39,7 @@
 <script type="text/javascript" src="/olive/resources/asserts/scripts/typeahead-bs2.min.js?version=${version}" ></script>
 
 <!-- page specific plugin scripts -->
-<script type="text/javascript" src="/olive/resources/asserts/scripts/jqGrid/jquery.jqGrid.js?version=${version}"></script>
+<script type="text/javascript" src="/olive/resources/asserts/scripts/jqGrid/jquery.jqGrid.min.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jqGrid/i18n/grid.locale-cn.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/chosen.jquery.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jquery-ui-1.10.3.full.min.js"></script>
@@ -60,11 +60,8 @@
 <script type="text/javascript" src="/olive/resources/scripts/olive.prototype.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.service.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.dialog.js?version=${version}"></script>
-<script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.form.js?version=${version}"></script>
 
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.format.js?version=${version}"></script>
-<script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.grid.js?version=${version}" ></script>
-<script type="text/javascript" src="/olive/resources/scripts/olive/olive.resource.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.selectBox.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/scripts/olive/olive.ui.utils.js?version=${version}"></script>
 

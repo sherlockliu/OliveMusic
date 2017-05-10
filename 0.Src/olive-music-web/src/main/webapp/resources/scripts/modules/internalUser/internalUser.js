@@ -1,7 +1,7 @@
 /**
  * Created by user on 2017/5/9.
  */
-define(['jQuery','grid'],function(require,exports,module){
+define(['grid'],function(require,exports,module){
     var instance = {};
     instance.init = function(){
         let $ = jQuery;
@@ -13,23 +13,23 @@ define(['jQuery','grid'],function(require,exports,module){
                 gridSelector: "#grid-table",
                 pagerSelector: "#grid-pager",
                 pager: "#grid-pager",
-                sortname: "UserID",
+                sortname: "userId",
                 colNames: ['ID', '用户登录名', '用户名称', '是否禁用', '角色', '上次登录时间', '修改时间', '创建时间'],
                 colModel: [
-                    { name: 'UserID', index: 'UserID', key: true, width: 60, sorttype: "int", editable: true, editoptions: { size: 70,readonly: 'readonly' } },
-                    { name: 'UserAccount', index: 'UserAccount', width: 90, editable: true, editoptions: { size: 70 }, editrules: { required: true }, formoptions: { elmsuffix: '<span style="color:red;">*</span>' } },
-                    { name: 'UserName', index: 'UserName', width: 150, editable: true, editoptions: { size: 70 }, editrules: { required: true }, formoptions: { elmsuffix: '<span style="color:red;">*</span>' } },
-                    { name: 'Invalid', index: 'Invalid', width: 70, editable: true, edittype: "checkbox", editoptions: { value: "1:0" } },
-                    { name: 'RoleIDs', index: 'RoleIDs', width: 200, editable: true, edittype: "select", formatter: 'select', editoptions: { size: 70, value: getRoleItems(), multiple: true } },
-                    { name: 'LastLoginTime', index: 'LastLoginTime', width: 90, editable: true, formatter: "date", formatoptions: { srcformat: "Y-m-d H:i:s", newformat: "Y-m-d H:i:s" }, editoptions: { size: 70, readonly: 'readonly' } },
-                    { name: 'ModifyTime', index: 'ModifyTime', width: 90, editable: true, formatter: "date", formatoptions: { srcformat: "Y-m-d H:i:s", newformat: "Y-m-d H:i:s" }, editoptions: { size: 70, readonly: 'readonly' } },
-                    { name: 'CreateTime', index: 'CreateTime', width: 90, editable: true, formatter: "date", formatoptions: { srcformat: "Y-m-d H:i:s", newformat: "Y-m-d H:i:s" }, editoptions: { size: 70, readonly: 'readonly' } }
+                    { name: 'userId', index: 'UserID', key: true, width: 60, sorttype: "int", editable: true, editoptions: { size: 70,readonly: 'readonly' } },
+                    { name: 'userAccount', index: 'userAccount', width: 90, editable: true, editoptions: { size: 70 }, editrules: { required: true }, formoptions: { elmsuffix: '<span style="color:red;">*</span>' } },
+                    { name: 'userName', index: 'userName', width: 150, editable: true, editoptions: { size: 70 }, editrules: { required: true }, formoptions: { elmsuffix: '<span style="color:red;">*</span>' } },
+                    { name: 'invalid', index: 'invalid', width: 70, editable: true, edittype: "checkbox", editoptions: { value: "1:0" } },
+                    { name: 'roleIds', index: 'roleIds', width: 200, editable: true, edittype: "select", formatter: 'select', editoptions: { size: 70, value: getRoleItems(), multiple: true } },
+                    { name: 'lastLoginTime', index: 'lastLoginTime', width: 90, editable: true, formatter: "date", formatoptions: { srcformat: "Y-m-d H:i:s", newformat: "Y-m-d H:i:s" }, editoptions: { size: 70, readonly: 'readonly' } },
+                    { name: 'modifyTime', index: 'modifyTime', width: 90, editable: true, formatter: "date", formatoptions: { srcformat: "Y-m-d H:i:s", newformat: "Y-m-d H:i:s" }, editoptions: { size: 70, readonly: 'readonly' } },
+                    { name: 'createTime', index: 'createTime', width: 90, editable: true, formatter: "date", formatoptions: { srcformat: "Y-m-d H:i:s", newformat: "Y-m-d H:i:s" }, editoptions: { size: 70, readonly: 'readonly' } }
                 ],
                 controls: [
-                    { ctlId: "RoleIDs", ctlType: "multiSelect" }
+                    { ctlId: "roleIds", ctlType: "multiSelect" }
                 ],
                 height: "500",
-                editurl: "sys_internal_user/save".serverPath(),//nothing is saved
+                editurl: "sys_internal_user/jqgrid_save".serverPath(),//nothing is saved
                 caption: "后台用户管理",
                 formWidth: 750
             };

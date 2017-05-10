@@ -3,210 +3,250 @@ package cn.com.magicsoft.olive.music.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.springframework.context.annotation.Primary;
+
+import cn.com.magicsoft.framework.core.utils.JsonDateSerializer$19;
+
 /**
- * ÇëÐ´³öÀàµÄÓÃÍ¾ 
- * @author user
- * @date  2017-04-01 17:10:22
- * @version 1.0.0
- * @copyright (C) 2013 WonHigh Information Technology Co.,Ltd 
- * All Rights Reserved. 
+ * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾
  * 
- * The software for the WonHigh technology development, without the 
- * company's written consent, and any other individuals and 
- * organizations shall not be used, Copying, Modify or distribute 
- * the software.
+ * @author user
+ * @date 2017-04-01 17:10:22
+ * @version 1.0.0
+ * @copyright (C) 2013 WonHigh Information Technology Co.,Ltd All Rights
+ *            Reserved.
+ * 
+ *            The software for the WonHigh technology development, without the
+ *            company's written consent, and any other individuals and
+ *            organizations shall not be used, Copying, Modify or distribute the
+ *            software.
  * 
  */
 public class SysInternalUser implements Serializable {
-    /**
-     * id
-     */
-    private Integer userId;
 
-    /**
-     * ÓÃ»§µÇÂ¼Ãû
-     */
-    private String userAccount;
+	public SysInternalUser() {
+		this.lastLoginTime = new Date();
+		this.modifyTime = new Date();
+		this.createTime = new Date();
+	}
 
-    /**
-     * ÓÃ»§Ãû
-     */
-    private String userName;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * ÃÜÂë
-     */
-    private String password;
+	/**
+	 * id
+	 */
+	private Integer userId;
 
-    /**
-     * ÊÇ·ñ½ûÓÃ
-     */
-    private Byte invalid;
+	/**
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
+	 */
+	private String userAccount;
 
-    /**
-     * ÉÏ´ÎµÇÂ¼Ê±¼ä
-     */
-    private Date lastLoginTime;
+	/**
+	 * ï¿½Ã»ï¿½ï¿½ï¿½
+	 */
+	private String userName;
 
-    /**
-     * ÐÞ¸ÄÊ±¼ä
-     */
-    private Date modifyTime;
+	/**
+	 * ï¿½ï¿½ï¿½ï¿½
+	 */
+	private String password;
 
-    /**
-     * ´´½¨Ê±¼ä
-     */
-    private Date createTime;
+	/**
+	 * ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+	 */
+	private Byte invalid;
 
-    /**
-     * 
-     * {@linkplain #userId}
-     *
-     * @return the value of sys_internal_user.user_id
-     */
-    public Integer getUserId() {
-        return userId;
-    }
+	/**
+	 * ï¿½Ï´Îµï¿½Â¼Ê±ï¿½ï¿½
+	 */
+	private Date lastLoginTime;
 
-    /**
-     * 
-     * {@linkplain #userId}
-     * @param userId the value for sys_internal_user.user_id
-     */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+	/**
+	 * ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
+	 */
+	private Date modifyTime;
 
-    /**
-     * 
-     * {@linkplain #userAccount}
-     *
-     * @return the value of sys_internal_user.user_account
-     */
-    public String getUserAccount() {
-        return userAccount;
-    }
+	/**
+	 * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	 */
+	private Date createTime;
 
-    /**
-     * 
-     * {@linkplain #userAccount}
-     * @param userAccount the value for sys_internal_user.user_account
-     */
-    public void setUserAccount(String userAccount) {
-        this.userAccount = userAccount;
-    }
+	/**
+	 * 
+	 * {@linkplain #userId}
+	 *
+	 * @return the value of sys_internal_user.user_id
+	 */
+	public Integer getUserId() {
+		return userId;
+	}
 
-    /**
-     * 
-     * {@linkplain #userName}
-     *
-     * @return the value of sys_internal_user.user_name
-     */
-    public String getUserName() {
-        return userName;
-    }
+	/**
+	 * 
+	 * {@linkplain #userId}
+	 * 
+	 * @param userId
+	 *            the value for sys_internal_user.user_id
+	 */
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
-    /**
-     * 
-     * {@linkplain #userName}
-     * @param userName the value for sys_internal_user.user_name
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	/**
+	 * 
+	 * {@linkplain #userAccount}
+	 *
+	 * @return the value of sys_internal_user.user_account
+	 */
+	public String getUserAccount() {
+		return userAccount;
+	}
 
-    /**
-     * 
-     * {@linkplain #password}
-     *
-     * @return the value of sys_internal_user.password
-     */
-    public String getPassword() {
-        return password;
-    }
+	/**
+	 * 
+	 * {@linkplain #userAccount}
+	 * 
+	 * @param userAccount
+	 *            the value for sys_internal_user.user_account
+	 */
+	public void setUserAccount(String userAccount) {
+		this.userAccount = userAccount;
+	}
 
-    /**
-     * 
-     * {@linkplain #password}
-     * @param password the value for sys_internal_user.password
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	/**
+	 * 
+	 * {@linkplain #userName}
+	 *
+	 * @return the value of sys_internal_user.user_name
+	 */
+	public String getUserName() {
+		return userName;
+	}
 
-    /**
-     * 
-     * {@linkplain #invalid}
-     *
-     * @return the value of sys_internal_user.invalid
-     */
-    public Byte getInvalid() {
-        return invalid;
-    }
+	/**
+	 * 
+	 * {@linkplain #userName}
+	 * 
+	 * @param userName
+	 *            the value for sys_internal_user.user_name
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    /**
-     * 
-     * {@linkplain #invalid}
-     * @param invalid the value for sys_internal_user.invalid
-     */
-    public void setInvalid(Byte invalid) {
-        this.invalid = invalid;
-    }
+	/**
+	 * 
+	 * {@linkplain #password}
+	 *
+	 * @return the value of sys_internal_user.password
+	 */
+	public String getPassword() {
+		return password;
+	}
 
-    /**
-     * 
-     * {@linkplain #lastLoginTime}
-     *
-     * @return the value of sys_internal_user.last_login_time
-     */
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
+	/**
+	 * 
+	 * {@linkplain #password}
+	 * 
+	 * @param password
+	 *            the value for sys_internal_user.password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    /**
-     * 
-     * {@linkplain #lastLoginTime}
-     * @param lastLoginTime the value for sys_internal_user.last_login_time
-     */
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
+	/**
+	 * 
+	 * {@linkplain #invalid}
+	 *
+	 * @return the value of sys_internal_user.invalid
+	 */
+	public Byte getInvalid() {
+		return invalid;
+	}
 
-    /**
-     * 
-     * {@linkplain #modifyTime}
-     *
-     * @return the value of sys_internal_user.modify_time
-     */
-    public Date getModifyTime() {
-        return modifyTime;
-    }
+	/**
+	 * 
+	 * {@linkplain #invalid}
+	 * 
+	 * @param invalid
+	 *            the value for sys_internal_user.invalid
+	 */
+	public void setInvalid(Byte invalid) {
+		this.invalid = invalid;
+	}
 
-    /**
-     * 
-     * {@linkplain #modifyTime}
-     * @param modifyTime the value for sys_internal_user.modify_time
-     */
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
+	/**
+	 * 
+	 * {@linkplain #lastLoginTime}
+	 *
+	 * @return the value of sys_internal_user.last_login_time
+	 */
+	public Date getLastLoginTime() {
+		return lastLoginTime;
+	}
 
-    /**
-     * 
-     * {@linkplain #createTime}
-     *
-     * @return the value of sys_internal_user.create_time
-     */
-    public Date getCreateTime() {
-        return createTime;
-    }
+	/**
+	 * 
+	 * {@linkplain #lastLoginTime}
+	 * 
+	 * @param lastLoginTime
+	 *            the value for sys_internal_user.last_login_time
+	 */
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
 
-    /**
-     * 
-     * {@linkplain #createTime}
-     * @param createTime the value for sys_internal_user.create_time
-     */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	/**
+	 * 
+	 * {@linkplain #modifyTime}
+	 *
+	 * @return the value of sys_internal_user.modify_time
+	 */
+	public Date getModifyTime() {
+		if(this.modifyTime == null){
+			this.modifyTime = new Date();
+		}
+		return modifyTime;
+	}
+
+	/**
+	 * 
+	 * {@linkplain #modifyTime}
+	 * 
+	 * @param modifyTime
+	 *            the value for sys_internal_user.modify_time
+	 */
+	public void setModifyTime(Date modifyTime) {
+		if(modifyTime == null){
+			modifyTime = new Date();
+		}
+		this.modifyTime = modifyTime;
+	}
+
+	/**
+	 * 
+	 * {@linkplain #createTime}
+	 *
+	 * @return the value of sys_internal_user.create_time
+	 */
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	/**
+	 * 
+	 * {@linkplain #createTime}
+	 * 
+	 * @param createTime
+	 *            the value for sys_internal_user.create_time
+	 */
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 }

@@ -4,10 +4,11 @@
 define(['olive','overlay'],function(require,exports,module){
     "use strict";
         var instance = {};
-        require('overlay');
+
         instance.loading = function (containerId) {
             var $view = $('#' + containerId);
-            $view.height('50px').overlay('load');
+            require('overlay');
+            $view.height('350px').overlay('load');
         }
         instance.complete = function (containerId) {
             var $view = $('#' + containerId);

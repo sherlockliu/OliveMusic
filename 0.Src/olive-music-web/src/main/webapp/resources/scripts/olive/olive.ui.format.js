@@ -1,9 +1,11 @@
-﻿var oliveFormatter = (function () {
+﻿define(function(require,exports,module){
+
     var formatter = {};
+
     formatter.switch = function (cellvalue, options, cell) {
         setTimeout(function () {
             $(cell).find('input[type=checkbox]')
-                    .wrap('<label class="inline" />')
+                .wrap('<label class="inline" />')
                 .addClass('ace ace-switch ace-switch-5')
                 .after('<span class="lbl"></span>');
         }, 0);
@@ -11,7 +13,7 @@
     formatter.pickDate = function (cellvalue, options, cell) {
         setTimeout(function () {
             $(cell).find('input[type=text]')
-                    .datepicker({ format: 'yyyy-mm-dd', language: 'zh-CN', autoclose: true });
+                .datepicker({ format: 'yyyy-mm-dd', language: 'zh-CN', autoclose: true });
         }, 0);
     };
     formatter.multiSelect = function (cellvalue, options, cell) {
@@ -79,5 +81,5 @@
     }
 
 
-    return formatter;
-}());
+    module.exports = formatter;
+})

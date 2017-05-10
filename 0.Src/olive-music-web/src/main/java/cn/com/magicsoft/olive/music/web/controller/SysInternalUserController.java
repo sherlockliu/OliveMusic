@@ -1,12 +1,14 @@
 package cn.com.magicsoft.olive.music.web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.poi.ss.formula.functions.Index;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.com.magicsoft.framework.core.enums.DatabaseOperatorEnum;
 import cn.com.magicsoft.framework.core.exception.ManagerException;
 import cn.com.magicsoft.framework.core.security.ITicket;
 import cn.com.magicsoft.framework.core.security.SecurityUser;
@@ -86,4 +89,28 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
    		AuthorizationManager.logout();
    		return "true";
    	}
+
+
+	@Override
+	public Map jQgridDeleteDecorator(Map params,String id){
+		if(StringUtils.isNotEmpty(id) && params !=null){
+			List<SysInternalUser> list = new ArrayList<SysInternalUser>();
+			String[] ids = id.split(",");
+			for(String item :ids){
+				SysInternalUser temp = new SysInternalUser();
+				temp.setUserId(Integer.parseInt(item));
+				list.add(temp);
+			}
+			params.put(DatabaseOperatorEnum.DELETED, list);
+		}
+		return params;
+	}
+	
+	@Override
+	public Map jQgridAddDecorator(Map params,SysInternalUser user){
+		if(user != null && params !=null){
+			user.setPassword(EncryptUtils.md5("12345678"));
+		}
+		return params;
+	}
 }

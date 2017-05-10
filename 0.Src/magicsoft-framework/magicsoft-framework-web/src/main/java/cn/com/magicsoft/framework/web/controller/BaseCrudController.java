@@ -1,6 +1,7 @@
 package cn.com.magicsoft.framework.web.controller;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Date;
@@ -39,6 +40,7 @@ import cn.com.magicsoft.framework.core.utils.BeanUtils;
 import cn.com.magicsoft.framework.core.utils.CustomDateEditorBase;
 import cn.com.magicsoft.framework.core.utils.HSSFExportUtils;
 import cn.com.magicsoft.framework.manager.BaseCrudManager;
+import cn.com.magicsoft.framework.web.model.JqGridOperationOptions;
 
 public abstract class BaseCrudController<ModelType> {
 	
@@ -169,6 +171,52 @@ public abstract class BaseCrudController<ModelType> {
 		flag.put("success", Boolean.valueOf(true));
 		return new ResponseEntity(flag, HttpStatus.OK);
 	}
+	
+	public Map jQgridDeleteDecorator(Map params,String id){
+		return params;
+	};
+	
+	public Map jQgridAddDecorator(Map params,ModelType model){
+		List<ModelType> list = new ArrayList<ModelType>();
+		list.add(model);
+		params.put(DatabaseOperatorEnum.INSERTED, list);
+		return params;
+	};
+	
+	public Map jQgridUpdateDecorator(Map params,ModelType model){
+		List<ModelType> list = new ArrayList<ModelType>();
+		list.add(model);
+		params.put(DatabaseOperatorEnum.UPDATED, list);
+		return params;
+	};
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping({ "/jqgrid_save" })
+	public ResponseEntity<Map<String, Boolean>> jQGridSave(HttpServletRequest req,ModelType modelType,String oper,String id)
+			throws JsonParseException, JsonMappingException, IOException, ManagerException, InstantiationException, IllegalAccessException {
+		@SuppressWarnings("rawtypes")
+		Map flag = new HashMap();
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map params = new HashMap();
+		
+		if(JqGridOperationOptions.Add.equals(oper)){
+			jQgridAddDecorator(params,modelType);
+		}
+		if(JqGridOperationOptions.Edit.equals(oper)){
+			jQgridUpdateDecorator(params,modelType);
+		}
+		if(JqGridOperationOptions.Delete.equals(oper)){
+			jQgridDeleteDecorator(params,id);
+		}
+		
+		if (params.size() > 0) {
+			this.manager.save(params);
+		}
+		flag.put("success", Boolean.valueOf(true));
+		return new ResponseEntity(flag, HttpStatus.OK);
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping({ "/save" })

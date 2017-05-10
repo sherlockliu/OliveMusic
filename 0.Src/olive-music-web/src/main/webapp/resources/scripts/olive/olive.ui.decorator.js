@@ -1,5 +1,6 @@
-﻿var oliveFormDecorator = (function () {
+﻿define(function(require,exports,module){
     var decorator = {};
+
     decorator.decorateDeleteForm = function (form) {
         var buttons = form.next().find('.EditButton .fm-button');
         buttons.addClass('btn btn-sm').find('[class*="-icon"]').remove();//ui-icon, s-icon
@@ -71,20 +72,20 @@
                                 else {
                                     var type = $.trim(file.type);
                                     if( ( type.length > 0 && ! (/^image\/(jpe?g|png|gif|bmp)$/i).test(type) )
-											|| ( type.length == 0 && ! (/\.(jpe?g|png|gif|bmp)$/i).test(file.name) )//for android's default browser which gives an empty string for file.type
-										) continue;//not an image so don't keep this file
+                                        || ( type.length == 0 && ! (/\.(jpe?g|png|gif|bmp)$/i).test(file.name) )//for android's default browser which gives an empty string for file.type
+                                    ) continue;//not an image so don't keep this file
                                 }
-								
+
                                 allowed_files.push(file);
                             }
                             if(allowed_files.length == 0) return false;
-			
+
                             return allowed_files;
                         }
                         /**,before_remove : function() {
                             return true;
                         }*/
-					,
+                        ,
                         preview_error : function(filename, error_code) {
                             //name of the file that failed
                             //error_code values
@@ -93,7 +94,7 @@
                             //3 = 'THUMBNAIL_FAILED'
                             //alert(error_code);
                         }
-			
+
                     }).on('change', function(){
                         //console.log($(this).data('ace_input_files'));
                         //console.log($(this).data('ace_input_method'));
@@ -102,36 +103,36 @@
                 case 'wysiwygeditor':
                     form.find("#" + options['ctlId']).addClass("wysiwyg-editor").ace_wysiwyg({
                         toolbar:
-                        [
-                            'font',
-                            null,
-                            'fontSize',
-                            null,
-                            { name: 'bold', className: 'btn-info' },
-                            { name: 'italic', className: 'btn-info' },
-                            { name: 'strikethrough', className: 'btn-info' },
-                            { name: 'underline', className: 'btn-info' },
-                            null,
-                            { name: 'insertunorderedlist', className: 'btn-success' },
-                            { name: 'insertorderedlist', className: 'btn-success' },
-                            { name: 'outdent', className: 'btn-purple' },
-                            { name: 'indent', className: 'btn-purple' },
-                            null,
-                            { name: 'justifyleft', className: 'btn-primary' },
-                            { name: 'justifycenter', className: 'btn-primary' },
-                            { name: 'justifyright', className: 'btn-primary' },
-                            { name: 'justifyfull', className: 'btn-inverse' },
-                            null,
-                            { name: 'createLink', className: 'btn-pink' },
-                            { name: 'unlink', className: 'btn-pink' },
-                            null,
-                            { name: 'insertImage', className: 'btn-success' },
-                            null,
-                            'foreColor',
-                            null,
-                            { name: 'undo', className: 'btn-grey' },
-                            { name: 'redo', className: 'btn-grey' }
-                        ],
+                            [
+                                'font',
+                                null,
+                                'fontSize',
+                                null,
+                                { name: 'bold', className: 'btn-info' },
+                                { name: 'italic', className: 'btn-info' },
+                                { name: 'strikethrough', className: 'btn-info' },
+                                { name: 'underline', className: 'btn-info' },
+                                null,
+                                { name: 'insertunorderedlist', className: 'btn-success' },
+                                { name: 'insertorderedlist', className: 'btn-success' },
+                                { name: 'outdent', className: 'btn-purple' },
+                                { name: 'indent', className: 'btn-purple' },
+                                null,
+                                { name: 'justifyleft', className: 'btn-primary' },
+                                { name: 'justifycenter', className: 'btn-primary' },
+                                { name: 'justifyright', className: 'btn-primary' },
+                                { name: 'justifyfull', className: 'btn-inverse' },
+                                null,
+                                { name: 'createLink', className: 'btn-pink' },
+                                { name: 'unlink', className: 'btn-pink' },
+                                null,
+                                { name: 'insertImage', className: 'btn-success' },
+                                null,
+                                'foreColor',
+                                null,
+                                { name: 'undo', className: 'btn-grey' },
+                                { name: 'redo', className: 'btn-grey' }
+                            ],
                         'wysiwyg': {
                             fileUploadError: showErrorAlert
                         }
@@ -149,7 +150,7 @@
             console.log("error uploading file", reason, detail);
         }
         $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>' +
-		 '<strong>File upload error</strong> ' + msg + ' </div>').prependTo('#alerts');
+            '<strong>File upload error</strong> ' + msg + ' </div>').prependTo('#alerts');
     }
-    return decorator;
-}())
+    module.exports = decorator;
+});

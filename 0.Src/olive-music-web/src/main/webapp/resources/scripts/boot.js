@@ -20,7 +20,8 @@
                 "asserts": "olive/resources/asserts/scripts",
                 "module":  "olive/resources/scripts/modules",
                 "lib": "olive/resources/scripts/lib",
-                "services":'olive/resources/scripts/modules/services'
+                "services":'olive/resources/scripts/modules/services',
+                'olivelib':'olive/resources/scripts/olive'
             }
         });
     }
