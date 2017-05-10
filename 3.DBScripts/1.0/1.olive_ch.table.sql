@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS `sys_internal_user` (
 	`user_name` varchar(50) NOT NULL COMMENT '用户名',
 	`password` varchar(32) NOT NULL COMMENT '密码',
 	`invalid` tinyint(4) NOT NULL DEFAULT 0   COMMENT '是否禁用',
-	`last_login_time` datetime NOT NULL COMMENT '上次登录时间',
-	`modify_time` datetime NOT NULL COMMENT '修改时间',
-	`create_time` datetime NOT NULL COMMENT '创建时间',
+	`last_login_time` datetime NOT NULL DEFAULT NOW() COMMENT '上次登录时间',
+	`modify_time` datetime NOT NULL DEFAULT NOW() COMMENT '修改时间',
+	`create_time` datetime NOT NULL DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

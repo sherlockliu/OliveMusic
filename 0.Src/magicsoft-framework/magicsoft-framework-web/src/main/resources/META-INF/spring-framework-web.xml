@@ -37,4 +37,16 @@
 	</mvc:interceptors>	
 	
 	<bean id="springContext" class="cn.com.magicsoft.framework.core.SpringContext"></bean>
+	
+	<bean id="magicsoftWebBinding" class="cn.com.magicsoft.framework.web.mvc.MagicSoftWebBinding"/>  
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >  
+        <!-- 自定义属性编辑器 -->  
+        <property name="webBindingInitializer" ref="magicsoftWebBinding">  
+         </property>  
+                <property name="messageConverters">  
+            <list>  
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>  
+            </list>  
+        </property>  
+    </bean> 
 </beans>

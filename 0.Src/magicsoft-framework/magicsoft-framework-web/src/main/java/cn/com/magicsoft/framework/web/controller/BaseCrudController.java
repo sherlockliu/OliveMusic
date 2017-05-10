@@ -1,7 +1,6 @@
 package cn.com.magicsoft.framework.web.controller;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Date;
@@ -23,6 +22,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -190,6 +190,16 @@ public abstract class BaseCrudController<ModelType> {
 		return params;
 	};
 	
+//	@InitBinder
+//	private void dateBinder(WebDataBinder binder) {
+//	            //The date format to parse or output your dates
+//	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//	            //Create a new CustomDateEditor
+//	    CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+//	            //Register it as custom editor for the Date type
+//	    binder.registerCustomEditor(Date.class, editor);
+//	}
+//	
 	@SuppressWarnings("unchecked")
 	@RequestMapping({ "/jqgrid_save" })
 	public ResponseEntity<Map<String, Boolean>> jQGridSave(HttpServletRequest req,ModelType modelType,String oper,String id)

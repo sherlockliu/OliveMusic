@@ -1,7 +1,7 @@
 /**
  * Created by user on 2017/4/8.
  */
-define(['jQuery','AjaxPromise','serviceFactory'],function(require,exports,module){
+define(['AjaxPromise','serviceFactory'],function(require,exports,module){
     "use strict";
     var AjaxPromise = require('AjaxPromise'),
         serviceFactory = require('serviceFactory'),

@@ -106,10 +106,14 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
 		return params;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map jQgridAddDecorator(Map params,SysInternalUser user){
 		if(user != null && params !=null){
 			user.setPassword(EncryptUtils.md5("12345678"));
+			List<SysInternalUser> list = new ArrayList<SysInternalUser>();
+			list.add(user);
+			params.put(DatabaseOperatorEnum.INSERTED, list);
 		}
 		return params;
 	}

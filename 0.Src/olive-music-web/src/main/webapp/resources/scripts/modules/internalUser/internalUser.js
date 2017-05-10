@@ -2,6 +2,7 @@
  * Created by user on 2017/5/9.
  */
 define(['grid'],function(require,exports,module){
+	"use strict";
     var instance = {};
     instance.init = function(){
         let $ = jQuery;

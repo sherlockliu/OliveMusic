@@ -3,9 +3,10 @@ package cn.com.magicsoft.olive.music.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.springframework.context.annotation.Primary;
 
+import cn.com.magicsoft.framework.core.utils.JsonDateDeserializer$19;
 import cn.com.magicsoft.framework.core.utils.JsonDateSerializer$19;
 
 /**
@@ -64,18 +65,25 @@ public class SysInternalUser implements Serializable {
 	/**
 	 * �ϴε�¼ʱ��
 	 */
+	@JsonSerialize(using = JsonDateSerializer$19.class)
+	@JsonDeserialize(using = JsonDateDeserializer$19.class)
 	private Date lastLoginTime;
 
 	/**
 	 * �޸�ʱ��
 	 */
+	@JsonSerialize(using = JsonDateSerializer$19.class)
+	@JsonDeserialize(using = JsonDateDeserializer$19.class)
 	private Date modifyTime;
 
 	/**
 	 * ����ʱ��
 	 */
+	@JsonSerialize(using = JsonDateSerializer$19.class)
+	@JsonDeserialize(using = JsonDateDeserializer$19.class)
 	private Date createTime;
 
+	
 	/**
 	 * 
 	 * {@linkplain #userId}
