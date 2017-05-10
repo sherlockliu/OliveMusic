@@ -1,7 +1,7 @@
 /**
  * Created by user on 2017/4/7.
  */
-define('serviceFactory',['jQuery','olive'],function(require,exports,module){
+define('serviceFactory',['olive'],function(require,exports,module){
     var olive = require('olive');
     olive.serviceFacory = olive.serviceFacory || {};
     olive.serviceFacory.servicePool = {};

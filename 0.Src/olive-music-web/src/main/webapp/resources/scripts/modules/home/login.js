@@ -1,4 +1,4 @@
-define(['jQuery','olive','serviceFactory','overlay','services/authenticationService'],function(require, exports, module){
+define(['olive','serviceFactory','overlay','services/authenticationService'],function(require, exports, module){
         //var $ = require('jQuery');
         var serviceFactory = require('serviceFactory');
         var loginController = {};

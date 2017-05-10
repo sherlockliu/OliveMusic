@@ -1,7 +1,7 @@
 /**
  * Created by user on 2017/4/8.
  */
-define(['jQuery','olive'],function(require,exports,module){
+define(['olive','overlay'],function(require,exports,module){
     "use strict";
         var instance = {};
         require('overlay');

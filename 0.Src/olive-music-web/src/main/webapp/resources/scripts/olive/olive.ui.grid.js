@@ -1,6 +1,4 @@
-﻿define(['jQuery'],function(require,exports,module){
-    let $ = jQuery;
-    console.log(require('jQuery'));
+﻿define(function(require,exports,module){
     $.fn.oliveGrid = function (options) {
         var settings = $.extend({
             datatype: "json",
@@ -27,7 +25,6 @@
                 left: 300
             }
         }, options);
-        require('asserts/scripts/jqGrid/jquery.jqGrid');
         $(settings.gridSelector).jqGrid(settings);
         $(settings.gridSelector).jqGrid('navGrid', settings.pagerSelector,
             { 	//navbar options
@@ -64,8 +61,7 @@
                 onclickSubmit: function () {
                     $('#editmodgrid-table').overlay('load');
                 }
-            },
-            {
+            }, {
                 //new record form
                 closeAfterAdd: true,
                 width: settings.formWidth || 'auto',
@@ -87,8 +83,7 @@
                 onclickSubmit: function () {
                     $('#editmodgrid-table').overlay('load');
                 }
-            },
-            {
+            }, {
                 //delete record form
                 recreateForm: true,
                 beforeShowForm: function (e) {
@@ -99,8 +94,7 @@
                     oliveFormDecorator.decorateDeleteForm(form);
                     form.data('styled', true);
                 }
-            },
-            {
+            }, {
                 //search form
                 recreateForm: true,
                 afterShowSearch: function (e) {
@@ -117,8 +111,7 @@
                  multipleGroup:true,
                  showQuery: true
                  */
-            },
-            {
+            }, {
                 //view record form
                 recreateForm: true,
                 beforeShowForm: function (e) {

@@ -34,7 +34,6 @@
 
 <script type="text/javascript" src="/olive/resources/asserts/scripts/seajs/2.2.0/sea-debug.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/ace-extra.min.js?version=${version}"></script>
-<script type="text/javascript" src="/olive/resources/asserts/scripts/jquery-1.4.4.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/jquery-2.0.3.min.js?version=${version}" ></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/bootstrap.min.js?version=${version}"></script>
 <script type="text/javascript" src="/olive/resources/asserts/scripts/typeahead-bs2.min.js?version=${version}" ></script>

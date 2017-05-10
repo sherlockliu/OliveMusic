@@ -1,7 +1,7 @@
 /**
  * Created by user on 2017/4/6.
  */
-define(['jQuery'],function(require,exports,module){
+define(function(require,exports,module){
     "use strict";
     $.fn.overlay = function (options) {
         var settings = $.extend({}, $.fn.overlay.defauts, options);

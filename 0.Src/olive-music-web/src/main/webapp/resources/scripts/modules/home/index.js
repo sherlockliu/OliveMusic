@@ -1,7 +1,7 @@
 /**
  * Created by user on 2017/4/6.
  */
-define(['jQuery','serviceFactory','./menu','spinner','./top','services/menuInfoService'],function(require,exports,module){
+define(['serviceFactory','./menu','spinner','./top','services/menuInfoService'],function(require,exports,module){
     "use strict";
     var top = require('./top'),
         menu = require('./menu'),
