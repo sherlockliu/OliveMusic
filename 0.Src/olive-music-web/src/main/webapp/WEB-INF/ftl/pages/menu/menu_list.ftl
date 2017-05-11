@@ -42,8 +42,8 @@
 
                             <div class="col-sm-9">
                                 <input readonly="" type="text" class="col-xs-10 col-sm-5" id="parentMenuName" name="parentMenuName" />
-                                <input readonly="" type="hidden" name="MenuID" class="col-xs-10 col-sm-5" id="MenuID" />
-                                <input type="hidden" name="ParentID" id="ParentID" />
+                                <input readonly="" type="hidden" name="menuId" class="col-xs-10 col-sm-5" id="menuId" />
+                                <input type="hidden" name="parentId" id="parentId" />
                             </div>
                         </div>
                         <div class="form-group">

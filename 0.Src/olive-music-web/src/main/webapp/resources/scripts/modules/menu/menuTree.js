@@ -1,18 +1,17 @@
 /**
  * Created by user on 2017/5/11.
  */
-define(function(require,exports,module){
+define(function (require,exports,module) {
+    "use strict"
     var zTree;
-
     var selectedNode = null;
     var action = '';//new edit
-
     var setting = {
         async: {
             enable: true,
             url: "Menu/GetTreeNode".serverPath(),
             autoParam: ["id", "name=name", "level=level"],
-            otherParam: { "otherParam": "zTreeAsyncTest" }
+            otherParam: {"otherParam": "zTreeAsyncTest"}
         },
         check: {
             enable: false
@@ -42,7 +41,7 @@ define(function(require,exports,module){
                     return true;
                 }
             },
-            onClick:function(event, treeId, treeNode){
+            onClick: function (event, treeId, treeNode) {
                 removeHoverDom(treeId, treeNode);
             },
             //beforeRemove: ConfirmDelete,
@@ -87,7 +86,7 @@ define(function(require,exports,module){
                     selectedNode = treeNode;
                     ConfirmDelete(function () {
                         var service = mordor.serviceFacory.getService('menuInfoService');
-                        service.remove({ menuId: selectedNode.id }, function () {
+                        service.remove({menuId: selectedNode.id}, function () {
                             var zTree = $.fn.zTree.getZTreeObj("menuTree");
                             zTree.removeNode(selectedNode, false);
                             selectedNode = null;
@@ -103,10 +102,6 @@ define(function(require,exports,module){
         $("#removeBtn_" + treeNode.tId).unbind().remove();
         $("#editBtn_" + treeNode.tId).unbind().remove();
     };
-
-    $(document).ready(function () {
-        $.fn.zTree.init($("#menuTree"), setting);
-    });
 
 //override dialog's title function to allow for HTML titles
     $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
@@ -172,42 +167,43 @@ define(function(require,exports,module){
             ]
         });
     }
+
     function initDialog(treeNode, action) {
-        var parentMenuName = $("#parentMenuName");
-        var MenuID = $("#MenuID");
-        var MenuName = $("#MenuName");
-        var MenuURL = $("#MenuURL");
-        var ParentID = $("#ParentID");
-        var treeObj = $.fn.zTree.getZTreeObj("menuTree");
-        var parentObj = treeNode.parentTId && treeObj.getNodeByTId(treeNode.parentTId);
+        var parentMenuName = $("#parentMenuName"),
+            menuId = $("#menuId"),
+            menuName = $("#menuName"),
+            menuUrl = $("#menuUrl"),
+            parentId = $("#parentId"),
+            treeObj = $.fn.zTree.getZTreeObj("menuTree"),
+            parentObj = treeNode.parentTId && treeObj.getNodeByTId(treeNode.parentTId);
 
         if (treeNode && action === 'edit') {
-            MenuID.val(treeNode.id);
-            MenuName.val(treeNode.name);
-            ParentID.val(treeNode.pId);
-            MenuURL.val(treeNode.URL);
+            menuId.val(treeNode.id);
+            menuName.val(treeNode.name);
+            parentId.val(treeNode.pId);
+            menuUrl.val(treeNode.URL);
             if (parentObj == null || parentObj.name === '') {
-                parentMenuName.val('Mordor Admin');//DOTO
+                parentMenuName.val('Olive Admin');//DOTO
             } else {
                 parentMenuName.val(parentObj.name);
             }
-            ParentID.val(treeNode.pId === '' ? '0' : treeNode.pId);
+            parentId.val(treeNode.pId === '' ? '0' : treeNode.pId);
         } else {
             parentMenuName.val(treeNode.name);
-            MenuID.val('');
-            MenuName.val('');
-            MenuURL.val('');
-            ParentID.val(treeNode.id);
+            menuId.val('');
+            menuName.val('');
+            menuUrl.val('');
+            parentId.val(treeNode.id);
         }
-        console.log(MenuURL.val());
+        console.log(menuUrl.val());
     }
 
     function createPostData() {
         var data = {};
-        data.MenuName = $("#MenuName").val();
-        data.MenuURL = $("#MenuURL").val();
-        data.ParentID = $("#ParentID").val();
-        data.MenuID = $("#MenuID").val();
+        data.menuName = $("#menuName").val();
+        data.menuUrl = $("#menuUrl").val();
+        data.parentId = $("#parentId").val();
+        data.menuId = $("#menuId").val();
         return data;
     }
 
@@ -239,5 +235,12 @@ define(function(require,exports,module){
         });
         return false;
     }
+    var instance = {};
+    instance.init = function () {
+        $(document).ready(function () {
+            $.fn.zTree.init($("#menuTree"), setting);
+        });
+    };
+    module.exports = instance;
 })
 
