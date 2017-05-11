@@ -10,11 +10,11 @@ define(['grid'],function(require,exports,module){
             var gridSelector = "#grid-table";
             var pagerSelector = "#grid-pager";
             var options = {
-                url: '/sys_internal_user/list.json'.serverPath(),
+                url: '/sys_internal_user/jqgird_list'.serverPath(),
                 gridSelector: "#grid-table",
                 pagerSelector: "#grid-pager",
                 pager: "#grid-pager",
-                sortname: "userId",
+                sortname: "user_id",
                 colNames: ['ID', '用户登录名', '用户名称', '是否禁用', '角色', '上次登录时间', '修改时间', '创建时间'],
                 colModel: [
                     { name: 'userId', index: 'UserID', key: true, width: 60, sorttype: "int", editable: true, editoptions: { size: 70,readonly: 'readonly' } },

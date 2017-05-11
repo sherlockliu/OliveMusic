@@ -22,7 +22,6 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +40,8 @@ import cn.com.magicsoft.framework.core.utils.CustomDateEditorBase;
 import cn.com.magicsoft.framework.core.utils.HSSFExportUtils;
 import cn.com.magicsoft.framework.manager.BaseCrudManager;
 import cn.com.magicsoft.framework.web.model.JqGridOperationOptions;
+import cn.com.magicsoft.framework.web.model.JqGridRequest;
+import cn.com.magicsoft.framework.web.model.JqGridResponse;
 
 public abstract class BaseCrudController<ModelType> {
 	
@@ -66,6 +67,7 @@ public abstract class BaseCrudController<ModelType> {
 		binder.registerCustomEditor(Date.class, new CustomDateEditorBase(dateFormat, false));
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping({ "/list.json" })
 	@ResponseBody
 	public Map<String, Object> queryList(HttpServletRequest req, Model model) throws ManagerException {
@@ -77,7 +79,7 @@ public abstract class BaseCrudController<ModelType> {
 
 		String sortOrder = (StringUtils.isEmpty(req.getParameter("order"))) ? ""
 				: String.valueOf(req.getParameter("order"));
-
+		
 		Map params = builderParams(req, model);
 		int total = this.manager.findCount(params);
 		SimplePage page = new SimplePage(pageNo, pageSize, total);
@@ -87,7 +89,32 @@ public abstract class BaseCrudController<ModelType> {
 		obj.put("rows", list);
 		return obj;
 	}
-
+	
+	@SuppressWarnings({ "rawtypes", "unused", "unchecked" })
+	@RequestMapping({"/jqgird_list"})
+	@ResponseBody
+	public JqGridResponse jQGridList(HttpServletRequest req,JqGridRequest jqGrid,Model model) throws ManagerException{
+		
+		Map params = builderParams(req, model);
+		int total = this.manager.findCount(params);
+		SimplePage page = new SimplePage(jqGrid.getPage(), jqGrid.getRows(),total);
+		List list = this.manager.findByPage(page, jqGrid.getSidx(), jqGrid.getSord(), params);
+		JqGridResponse response = new JqGridResponse();
+		response.setPage(jqGrid.getPage());
+		response.setRecords(total);
+		response.setTotal(this.getPageCount(jqGrid.getRows(), total));
+		response.setRows(list);
+		return response;
+	}
+	
+	private Integer getPageCount(Integer pageSize,Integer records){
+		Integer pageCount = 0;
+		if(records !=null && records != 0){
+			pageCount = records / pageSize + ((records % pageSize)==0?0:1);
+		}
+		return pageCount;
+	}
+	
 	public Map<String, Object> builderParams(HttpServletRequest req, Model model) {
 		Map<String,Object> retParams = new HashMap(req.getParameterMap().size());
 		Map<String, String[]> params = req.getParameterMap();
@@ -190,16 +217,7 @@ public abstract class BaseCrudController<ModelType> {
 		return params;
 	};
 	
-//	@InitBinder
-//	private void dateBinder(WebDataBinder binder) {
-//	            //The date format to parse or output your dates
-//	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-//	            //Create a new CustomDateEditor
-//	    CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
-//	            //Register it as custom editor for the Date type
-//	    binder.registerCustomEditor(Date.class, editor);
-//	}
-//	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping({ "/jqgrid_save" })
 	public ResponseEntity<Map<String, Boolean>> jQGridSave(HttpServletRequest req,ModelType modelType,String oper,String id)
