@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+		<groupId>cn.com.magicsoft</groupId>
+		<artifactId>olive-music</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>olive-music-manager-api</artifactId>
+  <version>${project.parent.version}</version>
+  <dependencies>
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<dependency>
+			<groupId>cn.com.magicsoft</groupId>
+			<artifactId>olive-music-domain</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.com.magicsoft</groupId>
+			<artifactId>magicsoft-framework-manager</artifactId>
+			<version>${magicsoft.framework.version}</version>
+		</dependency>
+	</dependencies>
+</project>

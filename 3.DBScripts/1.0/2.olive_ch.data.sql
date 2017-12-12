@@ -1,53 +1,105 @@
-﻿USE `mordor_ch`;
+﻿USE `olive_ch`;
 
 /**************************************默认菜单 Start********************************************/
+DELETE FROM `sys_internal_user`;
+INSERT INTO `sys_internal_user` (
+	`user_id`,
+	`user_account`,
+	`user_name`,
+	`password`,
+	`invalid`,
+	`last_login_time`,
+	`modify_time`,
+	`create_time`
+)
+VALUES
+	(
+		18,
+		'admin',
+		'admin',
+		'E10ADC3949BA59ABBE56E057F20F883E',
+		0,
+		'2014-06-21 18:11:08',
+		'2014-06-21 18:11:08',
+		'2014-06-21 18:11:08'
+	),
+	(
+		19,
+		'tester',
+		'测试者',
+		'E10ADC3949BA59ABBE56E057F20F883E',
+		0,
+		'2014-06-28 00:24:23',
+		'2014-08-17 02:52:31',
+		'2014-06-28 00:24:23'
+	),
+	(
+		20,
+		'Monica',
+		'Monica',
+		'E10ADC3949BA59ABBE56E057F20F883E',
+		0,
+		'2014-06-28 00:38:39',
+		'2014-08-17 01:56:31',
+		'2014-06-28 00:38:39'
+	),
+	(
+		22,
+		'r9',
+		'ronaldo',
+		'E10ADC3949BA59ABBE56E057F20F883E',
+		0,
+		'2014-07-15 10:40:53',
+		'2014-08-18 15:00:43',
+		'2014-07-15 10:40:53'
+	);
 -- 默认菜单
-DELETE FROM `sys_MenuInfo`;
-INSERT INTO `sys_MenuInfo`(`MenuID`,`MenuName`,`ParentID`,`MenuURL`,`MenuOrder`,`MenuIcon`,`MenuType`,`IsSystem`,`Invalid`,`ModifyTime`,`CreateTime`) VALUES
-(1000,'我的桌面',0,'/Home/DashBoard',0,'icon-dashboard',1,1,0,Now(),Now()),
-(1001,'权限管理',0,'',1,'icon-desktop',1,1,0,Now(),Now()),
-(1002,'系统管理',0,'',2,'icon-desktop',1,1,0,Now(),Now()),
-(1003,'站点管理',0,'',3,'icon-desktop',1,1,0,Now(),Now()),
-(1004,'资源管理',0,'',4,'icon-desktop',1,1,0,Now(),Now()),
-(1005,'站点数据管理',0,'',5,'icon-desktop',1,1,0,Now(),Now()),
-(1006,'数据报表',0,'',6,'icon-desktop',1,1,0,Now(),Now()),
+DELETE FROM `sys_menu_info`;
+INSERT INTO `sys_menu_info`(`menu_id`,`menu_name`,`parent_id`,`menu_url`,`menu_order`,`menu_icon`,`menu_type`,`is_system`,`invalid`,`modify_time`,`create_time`,`is_parent`) VALUES
+(1000,'我的桌面',0,'/Home/DashBoard',0,'icon-dashboard',1,1,0,Now(),Now(),0),
+(1001,'权限管理',0,'',1,'icon-desktop',1,1,0,Now(),Now(),1),
+(1002,'系统管理',0,'',2,'icon-desktop',1,1,0,Now(),Now(),1),
+(1003,'站点管理',0,'',3,'icon-desktop',1,1,0,Now(),Now(),1),
+(1004,'资源管理',0,'',4,'icon-desktop',1,1,0,Now(),Now(),1),
+(1005,'站点数据管理',0,'',5,'icon-desktop',1,1,0,Now(),Now(),1),
+(1006,'数据报表',0,'',6,'icon-desktop',1,1,0,Now(),Now(),1),
 
 -- 权限管理
-(100100,'后台用户管理',1001,'/InternalUser/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100101,'角色管理',1001,'/Role/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100102,'菜单管理',1001,'/Menu/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
+(100100,'后台用户管理',1001,'/InternalUser/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100101,'角色管理',1001,'/Role/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100102,'菜单管理',1001,'/Menu/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
 
 -- 系统管理
-(100200,'系统设置',1002,'/Blank/Index',0,'icon-desktop',1,1,0,Now(),Now()),
+(100200,'系统设置',1002,'/Blank/Index',0,'icon-desktop',1,1,0,Now(),Now(),0),
 
 -- 站点管理
-(100300,'样式管理',1003,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100301,'图片管理',1003,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100302,'文字管理',1003,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100303,'站点设置',1003,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now()),
+(100300,'样式管理',1003,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100301,'图片管理',1003,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100302,'文字管理',1003,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100303,'站点设置',1003,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now(),0),
 
 -- 资源管理
-(100400,'艺术家管理',1004,'/Artist/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100401,'专辑管理',1004,'/Album/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100402,'类别管理',1004,'/Category/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100403,'标签管理',1004,'/Tag/Index',3,'icon-double-angle-right',1,1,0,Now(),Now()),
+(100400,'艺术家管理',1004,'/Artist/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100401,'专辑管理',1004,'/Album/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100402,'类别管理',1004,'/Category/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100403,'标签管理',1004,'/Tag/Index',3,'icon-double-angle-right',1,1,0,Now(),Now(),0),
 
 -- 站点数据管理
-(100500,'注册用户管理',1005,'/User/Index',0,'icon-desktop',1,1,0,Now(),Now()),
-(100501,'评论管理',1005,'/Blank/Index',1,'icon-desktop',1,1,0,Now(),Now()),
+(100500,'注册用户管理',1005,'/User/Index',0,'icon-desktop',1,1,0,Now(),Now(),0),
+(100501,'评论管理',1005,'/Blank/Index',1,'icon-desktop',1,1,0,Now(),Now(),0),
 
 -- 数据报表
-(100600,'用户报表',1006,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100601,'访问报表',1006,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100602,'下载报表',1006,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now()),
-(100603,'浏览报表',1006,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now());
+(100600,'用户报表',1006,'/Blank/Index',0,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100601,'访问报表',1006,'/Blank/Index',1,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100602,'下载报表',1006,'/Blank/Index',2,'icon-double-angle-right',1,1,0,Now(),Now(),0),
+(100603,'浏览报表',1006,'/Blank/Index',3,'icon-double-angle-right',1,1,0,Now(),Now(),0);
 
 /**************************************默认菜单 End*************************************************/
 
 /**************************************权限管理 Start*************************************************/
 -- 默认权限项信息
-DELETE FROM `sys_FunctionInfo`;
-INSERT INTO `sys_FunctionInfo`(`FuncID`,`FuncCode`,`FuncName`,`FuncDescription`,`FuncOrder`,`CreateTime`) VALUES
+DELETE FROM `sys_function_info`;
+INSERT INTO `sys_function_info`(`func_id`,`func_code`,`func_name`,`func_description`,`func_order`,`create_time`) VALUES
 -- 后台用户管理
 (10010000, 'InternalUser_View', '查看', '查看后台用户',0,Now()),
 (10010001, 'InternalUser_Add', '新增', '新增后台用户',1,Now()),
@@ -102,8 +154,8 @@ INSERT INTO `sys_FunctionInfo`(`FuncID`,`FuncCode`,`FuncName`,`FuncDescription`,
 (10050003, 'User_Del', '删除', '删除注册用户',3,Now());
 
 -- 默认权限菜单关联
-DELETE FROM `sys_MenuFunction`;
-INSERT INTO `sys_MenuFunction`(`MenuID`,`FuncID`,`CreateTime`) VALUES
+DELETE FROM `sys_menu_function`;
+INSERT INTO `sys_menu_function`(`menu_id`,`func_id`,`create_time`) VALUES
 -- 后台用户管理
 (100100,10010000,Now()),
 (100100,10010001,Now()),
@@ -162,7 +214,7 @@ INSERT INTO `sys_MenuFunction`(`MenuID`,`FuncID`,`CreateTime`) VALUES
 /*************************************类别管理 Strat*************************************************/
 -- 默认类别
 DELETE FROM `sys_category`;
-INSERT INTO `sys_category`(`CategoryID`,`CategoryCode`,`CategoryName`,`CategoryDesc`,`ModifyTime`,`CreateTime`) VALUES
+INSERT INTO `sys_category`(`category_id`,`category_code`,`category_name`,`category_desc`,`modify_time`,`create_time`) VALUES
 (0,'sysWLB','无类别','无类别(系统默认)',Now(),Now()),
 (1,'sysGJDQ','国家/地区','国家/地区(系统默认)',Now(),Now()),
 (2,'sysSF','省份','省份(系统默认)',Now(),Now()),
@@ -172,8 +224,8 @@ INSERT INTO `sys_category`(`CategoryID`,`CategoryCode`,`CategoryName`,`CategoryD
 
 
 -- 默认类别项
-DELETE FROM `sys_categoryitem`;
-INSERT INTO `sys_categoryitem`(`CategoryItemID`,`CategoryItemCode`,`CategoryItemName`,`CategoryID`,`ParentItemID`,`OrderNo`,`IsDefault`,`Invalid`,`ModifyTime`,`CreateTime`) VALUES
+DELETE FROM `sys_category_item`;
+INSERT INTO `sys_category_item`(`category_item_id`,`category_item_code`,`category_item_name`,`category_id`,`parent_item_id`,`order_no`,`is_default`,`invalid`,`modify_time`,`create_time`) VALUES
 -- 国家/地区
 (1010000,'sysGJDQ0000','未选择',1,0,1,0,0,Now(),Now()),
 (1010001,'sysGJDQ0001','中国',1,0,2,0,0,Now(),Now()),
@@ -610,8 +662,8 @@ INSERT INTO `sys_categoryitem`(`CategoryItemID`,`CategoryItemCode`,`CategoryItem
 /*************************************类别管理 End*************************************************/
 
 /*************************************唱片内容权重分值表 Strat*************************************************/
-delete from mordor_score;
-INSERT INTO `mordor_score`(`ScoreType`,`Score`,`ModifyTime`,`CreateTime`)VALUES
+delete from olive_score;
+INSERT INTO `olive_score`(`score_type`,`Score`,`modify_time`,`create_time`)VALUES
 ('AlbumName',100,now(),now()),
 ('Artist',80,now(),now()),
 ('Style',30,now(),now()),

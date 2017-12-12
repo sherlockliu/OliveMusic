@@ -32,3 +32,11 @@ release.properties
 Servers/*
 target/*
 0.src/**/.settings/*
+0.Src/olive-music-web/src/main/webapp/.idea/*
+0.Src/olive-music-web/src/main/.idea/*
+*.MF
+*/target/*
+0.Src/olive-music-dal/src/main/resources/META-INF/spring-olive-conf.xml
+*.MF
+
+0.Src/olive-music-domain/target/classes/META-INF/MANIFEST.MF

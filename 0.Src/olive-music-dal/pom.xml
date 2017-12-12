@@ -17,14 +17,31 @@
 		</dependency>
 		<!-- mysql驱动包 -->
         <dependency>
-            <groupId>mysql</groupId>
+            <groupId>mysql</groupId> 
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.29</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
+		<dependency>
+		    <groupId>c3p0</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>0.9.1.2</version>
+		</dependency>		
         <dependency>
             <groupId>cn.com.magicsoft</groupId>
             <artifactId>olive-music-domain</artifactId>
             <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.magicsoft</groupId>
+            <artifactId>magicsoft-framework-dal</artifactId>
+            <version>${magicsoft.framework.version}</version>
         </dependency>
   </dependencies>
 </project>
