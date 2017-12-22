@@ -12,6 +12,6 @@
 	                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 	             
 	<!-- 加载系统properties -->
-	<context:property-placeholder location="file:/Users/mac/sherlock/0.Project/2.Github/0.Java/OliveMusic/2.Resource/0.Settings/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" order="2" system-properties-mode="ENVIRONMENT"/>
+	<context:property-placeholder location="file:/Users/mac/Documents/0.Src/0.Github/3.Java/OliveMusic/2.Resource/0.Settings/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" order="2" system-properties-mode="ENVIRONMENT"/>
 	<context:property-placeholder location="file:${OLIVE_WEB_CONF}/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" order="2" system-properties-mode="ENVIRONMENT"/>
 </beans>

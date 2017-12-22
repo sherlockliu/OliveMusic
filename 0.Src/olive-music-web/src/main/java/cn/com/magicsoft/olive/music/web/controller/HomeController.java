@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.aspectj.weaver.ast.Var;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,15 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.magicsoft.framework.core.exception.ManagerException;
-import cn.com.magicsoft.framework.core.security.Authorization;
-import cn.com.magicsoft.framework.core.security.Role;
-import cn.com.magicsoft.framework.core.security.SecurityUser;
 import cn.com.magicsoft.framework.core.utils.JsonUtils;
-import cn.com.magicsoft.framework.web.security.AuthorizationManager;
 import cn.com.magicsoft.olive.music.manager.api.SysInternalUserManager;
 import cn.com.magicsoft.olive.music.manager.api.SysMenuInfoManager;
 import cn.com.magicsoft.olive.music.model.SysMenuInfo;
-import cn.com.magicsoft.olive.music.model.SysRoleInfo;
 import cn.com.magicsoft.olive.music.web.viewmodel.MenuView;
 
 @Controller

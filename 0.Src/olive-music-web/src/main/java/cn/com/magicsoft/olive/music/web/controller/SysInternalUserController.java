@@ -28,75 +28,74 @@ import cn.com.magicsoft.olive.music.model.SysInternalUser;
 import cn.com.magicsoft.olive.music.web.security.OliveTicket;
 
 /**
- * ��д�������; 
- * @author user
- * @date  2017-04-01 17:28:32
- * @version 1.0.0
- * @copyright (C) 2013 WonHigh Information Technology Co.,Ltd 
- * All Rights Reserved. 
+ * ��д�������;
  * 
- * The software for the WonHigh technology development, without the 
- * company's written consent, and any other individuals and 
- * organizations shall not be used, Copying, Modify or distribute 
- * the software.
+ * @author user
+ * @date 2017-04-01 17:28:32
+ * @version 1.0.0
+ * @copyright (C) 2013 WonHigh Information Technology Co.,Ltd All Rights
+ *            Reserved.
+ * 
+ *            The software for the WonHigh technology development, without the
+ *            company's written consent, and any other individuals and
+ *            organizations shall not be used, Copying, Modify or distribute the
+ *            software.
  * 
  */
 @Controller
 @RequestMapping("/sys_internal_user")
 public class SysInternalUserController extends BaseCrudController<SysInternalUser> {
-	
-	private XLogger logger = XLoggerFactory.getXLogger(SysInternalUserController.class);
-	
-    @Resource
-    private SysInternalUserManager sysInternalUserManager;
 
-    @Override
-    public CrudInfo init() {
-        return new CrudInfo("sys_internal_user/",sysInternalUserManager);
-    }
-    
-    
-    @RequestMapping(value="/index")
-    public String Index(){
-    	return "/internalUser/internalUser_index";
-    }
-    
-    @RequestMapping(value = "/login")
+	private XLogger logger = XLoggerFactory.getXLogger(SysInternalUserController.class);
+
+	@Resource
+	private SysInternalUserManager sysInternalUserManager;
+
+	@Override
+	public CrudInfo init() {
+		return new CrudInfo("sys_internal_user/", sysInternalUserManager);
+	}
+
+	@RequestMapping(value = "/index")
+	public String Index() {
+		return "/internalUser/internalUser_index";
+	}
+
+	@RequestMapping(value = "/login")
 	@ResponseBody
 	public Map<String, Object> doLogin(HttpServletRequest req, Model model) throws ManagerException {
-		Map<String,Object> params = builderParams(req, model);
-		Map<String, Object> result = new HashMap<String,Object>();
+		Map<String, Object> params = builderParams(req, model);
+		Map<String, Object> result = new HashMap<String, Object>();
 		try {
-			ITicket ticket = new OliveTicket(params.get("userAccount").toString(), 
+			ITicket ticket = new OliveTicket(params.get("userAccount").toString(),
 					EncryptUtils.md5(params.get("password").toString()), true);
-			
+
 			SecurityUser user = AuthorizationManager.login(ticket);
-			if(user!= null){
-				result.put("success",true);
-			}else{
-				result.put("success",false);
+			if (user != null) {
+				result.put("success", true);
+			} else {
+				result.put("success", false);
 			}
 		} catch (Exception e) {
 			logger.error("", e);
-			result.put("success",true);
+			result.put("success", true);
 		}
 		return result;
 	}
-    
-    @RequestMapping(value = "/logOut")
-   	@ResponseBody
-   	public String logOut(HttpServletRequest req, Model model) throws ManagerException {
-   		AuthorizationManager.logout();
-   		return "true";
-   	}
 
+	@RequestMapping(value = "/logOut")
+	@ResponseBody
+	public String logOut(HttpServletRequest req, Model model) throws ManagerException {
+		AuthorizationManager.logout();
+		return "true";
+	}
 
 	@Override
-	public Map jQgridDeleteDecorator(Map params,String id){
-		if(StringUtils.isNotEmpty(id) && params !=null){
+	public Map jQgridDeleteDecorator(Map params, String id) {
+		if (StringUtils.isNotEmpty(id) && params != null) {
 			List<SysInternalUser> list = new ArrayList<SysInternalUser>();
 			String[] ids = id.split(",");
-			for(String item :ids){
+			for (String item : ids) {
 				SysInternalUser temp = new SysInternalUser();
 				temp.setUserId(Integer.parseInt(item));
 				list.add(temp);
@@ -105,11 +104,11 @@ public class SysInternalUserController extends BaseCrudController<SysInternalUse
 		}
 		return params;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public Map jQgridAddDecorator(Map params,SysInternalUser user){
-		if(user != null && params !=null){
+	public Map jQgridAddDecorator(Map params, SysInternalUser user) {
+		if (user != null && params != null) {
 			user.setPassword(EncryptUtils.md5("12345678"));
 			List<SysInternalUser> list = new ArrayList<SysInternalUser>();
 			list.add(user);
