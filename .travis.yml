@@ -1,7 +1,7 @@
 language: java
 jdk:
   - oraclejdk8
-script: mvn -Pitest -DargLine="-Dcom.basho.riak.search=true -Dcom.basho.riak.2i=true" clean verify
+script: mvn clean install deploy -B -e -U  -Dmaven.test.skip=true -e
 notifications:
   email:
     - 277134384@qq.com
